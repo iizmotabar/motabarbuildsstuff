@@ -5,6 +5,7 @@ import {
   GraduationCap, 
   Headphones 
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const workStyle = [
   {
@@ -35,10 +36,16 @@ const workStyle = [
 ];
 
 export function HowIWork() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
+
   return (
     <section id="how-i-work" className="py-24 md:py-32 bg-surface">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`max-w-3xl mx-auto text-center mb-16 animate-on-scroll ${headerVisible ? "visible" : ""}`}
+        >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
             How I Work
           </h2>
@@ -48,13 +55,16 @@ export function HowIWork() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="space-y-6">
+          <div
+            ref={listRef}
+            className={`space-y-6 stagger-children ${listVisible ? "visible" : ""}`}
+          >
             {workStyle.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 glass-card"
+                className="flex items-start gap-4 p-6 glass-card group hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <item.icon className="h-5 w-5" />
                 </div>
                 <div>

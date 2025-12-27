@@ -8,6 +8,7 @@ import {
   Zap 
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const services = [
   {
@@ -90,10 +91,16 @@ const services = [
 ];
 
 export function Services() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
+
   return (
     <section id="services" className="py-24 md:py-32 bg-surface">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`max-w-3xl mx-auto text-center mb-16 animate-on-scroll ${headerVisible ? "visible" : ""}`}
+        >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
             Services
           </h2>
@@ -102,14 +109,17 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          ref={gridRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
+        >
           {services.map((service, index) => (
             <Card
               key={index}
-              className="glass-card hover:border-foreground/20 transition-all duration-300 hover:shadow-lg"
+              className="glass-card hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <CardHeader>
-                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center mb-4">
+                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <service.icon className="h-5 w-5" />
                 </div>
                 <CardTitle className="text-lg font-semibold">
