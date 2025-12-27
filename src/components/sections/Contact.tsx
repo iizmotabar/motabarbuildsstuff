@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Calendar, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -55,11 +55,17 @@ export function Contact() {
             ref={formRef}
             className={`animate-on-scroll-scale ${formVisible ? "visible" : ""}`}
           >
-            <div className="flex justify-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
               <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform" asChild>
-                <a href="#contact">
-                  Discuss Your Needs
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <a href="https://calendly.com/iizmotabar" target="_blank" rel="noopener noreferrer">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  Book on Calendly
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" className="h-12 px-8 hover:scale-105 transition-transform" asChild>
+                <a href="https://www.linkedin.com/in/iizmotabar" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="mr-2 h-4 w-4" />
+                  Connect on LinkedIn
                 </a>
               </Button>
             </div>
