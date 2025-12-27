@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const packages = [
   {
@@ -55,6 +56,9 @@ const packages = [
 ];
 
 export function Packages() {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
+
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -65,7 +69,10 @@ export function Packages() {
   return (
     <section id="packages" className="py-24 md:py-32">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`max-w-3xl mx-auto text-center mb-16 animate-on-scroll ${headerVisible ? "visible" : ""}`}
+        >
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
             Packages
           </h2>
@@ -74,11 +81,14 @@ export function Packages() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          ref={gridRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
+        >
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`relative glass-card transition-all duration-300 hover:shadow-lg ${
+              className={`relative glass-card transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
                 pkg.featured
                   ? "border-foreground/50 shadow-lg"
                   : ""
