@@ -53,7 +53,7 @@ export function Contact() {
             </Button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
               <Input

@@ -52,9 +52,9 @@ export function HowIWork() {
             {workStyle.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 p-6 rounded-lg bg-card border border-border"
+                className="flex items-start gap-4 p-6 glass-card"
               >
-                <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center flex-shrink-0">
                   <item.icon className="h-5 w-5" />
                 </div>
                 <div>

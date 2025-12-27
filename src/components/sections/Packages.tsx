@@ -78,10 +78,10 @@ export function Packages() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`relative bg-card ${
+              className={`relative glass-card transition-all duration-300 hover:shadow-lg ${
                 pkg.featured
-                  ? "border-foreground"
-                  : "border-border"
+                  ? "border-foreground/50 shadow-lg"
+                  : ""
               }`}
             >
               {pkg.featured && (

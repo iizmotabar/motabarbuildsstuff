@@ -106,10 +106,10 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="bg-card border-border hover:border-foreground/20 transition-colors"
+              className="glass-card hover:border-foreground/20 transition-all duration-300 hover:shadow-lg"
             >
               <CardHeader>
-                <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center mb-4">
+                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center mb-4">
                   <service.icon className="h-5 w-5" />
                 </div>
                 <CardTitle className="text-lg font-semibold">
