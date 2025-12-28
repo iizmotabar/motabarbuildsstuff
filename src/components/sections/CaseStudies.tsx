@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { ArrowUpRight, TrendingUp, BarChart3, Target, X, CheckCircle } from "lucide-react";
+import { ArrowUpRight, TrendingUp, BarChart3, Target, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -74,6 +75,116 @@ const caseStudies = [
       { label: "Content Strategy", value: "Data-Led", icon: BarChart3 },
     ],
     tags: ["GA4", "Search Console", "BigQuery", "SEO"],
+  },
+  {
+    title: "Proactive Insight Delivery With Slack Alerts",
+    client: "Marketing Team",
+    headline: "From reactive firefighting to proactive insight delivery",
+    description: "Set up a monitoring layer for ingestion and modeling jobs with Slack alerts that notify the team if something breaks — before reports are due.",
+    background: "Every time a tracking issue occurred — a pixel broke, a form changed, an API updated — the team only realized after weekly reporting. That meant late corrections, lost history, and uncomfortable conversations with executives.",
+    problem: "They lacked visibility into data health and were always reacting to failures instead of preventing them.",
+    whatIBuilt: [
+      "Automated health checks against ingestion pipelines",
+      "Validation scripts for changes in GA4 event structures",
+      "Slack alerts with detailed incident messages and suggested fixes",
+      "Status dashboards for pipeline reliability over time",
+    ],
+    outcome: "Silent breakages disappeared, and decision-makers regained trust in weekly reports. The company now resolves issues in hours instead of days.",
+    emotionalShift: "Instead of anxiety around reporting day, the team has calm confidence — knowing issues surface immediately, not after leadership asks questions.",
+    metrics: [
+      { label: "Issue Resolution", value: "Hours", icon: TrendingUp },
+      { label: "Data Trust", value: "Restored", icon: Target },
+      { label: "Silent Failures", value: "0", icon: BarChart3 },
+    ],
+    tags: ["Slack", "Monitoring", "Automation", "Alerts"],
+  },
+  {
+    title: "HubSpot + BigQuery Sales Attribution",
+    client: "Growing SaaS Platform",
+    headline: "Enriching HubSpot contacts with accurate attribution to improve sales prioritization",
+    description: "Synced HubSpot contacts into BigQuery, enriched each record with campaign metadata and source information, and pushed enriched fields back into HubSpot using reverse ETL.",
+    background: "HubSpot tracked early engagement but attribution signals were weak. Paid, organic, and cold leads all appeared identical in the CRM — confusing prioritization.",
+    problem: "Sales needed attribution enriched with marketing context to prioritize revenue-driving conversations.",
+    whatIBuilt: [
+      "HubSpot to BigQuery sync using Fivetran",
+      "Attribution enrichment with Google Ads, Meta Ads, and GSC data",
+      "Reverse ETL to push enriched fields back into HubSpot",
+      "Lead scoring based on source quality and intent signals",
+    ],
+    outcome: "Sales reps instantly saw which leads came from high-intent paid search vs low-priority organic, improving closing efficiency and revenue prioritization.",
+    emotionalShift: "Sales stopped wasting time on low-quality leads and focused energy on prospects most likely to convert.",
+    metrics: [
+      { label: "Lead Clarity", value: "100%", icon: TrendingUp },
+      { label: "Prioritization", value: "Automated", icon: Target },
+      { label: "Sales Efficiency", value: "Improved", icon: BarChart3 },
+    ],
+    tags: ["HubSpot", "BigQuery", "Reverse ETL", "Attribution"],
+  },
+  {
+    title: "End-to-End Marketing ETL Pipelines",
+    client: "Enterprise Marketing Team",
+    headline: "Scaling marketing analytics through automated ETL pipelines and data modeling in BigQuery",
+    description: "Built comprehensive ETL pipelines connecting all marketing platforms to a centralized BigQuery warehouse with normalized metrics across channels.",
+    background: "Marketing data lived in silos across Meta, Google, LinkedIn, and TikTok with no way to compare performance across channels.",
+    problem: "Leadership couldn't answer basic questions about which channels delivered the highest returning customer value.",
+    whatIBuilt: [
+      "Multi-platform ETL pipelines with daily refreshes",
+      "Normalized cost and conversion metrics across all channels",
+      "Customer value attribution models",
+      "Executive dashboards with cross-channel comparisons",
+    ],
+    outcome: "For the first time, leadership could compare campaign performance across platforms using normalized metrics — enabling a 15 percent budget increase toward channels with highest returning customer value.",
+    emotionalShift: "Budget conversations shifted from opinion-based debates to data-driven decisions.",
+    metrics: [
+      { label: "Budget Optimization", value: "+15%", icon: TrendingUp },
+      { label: "Channels Unified", value: "4+", icon: Target },
+      { label: "Reporting", value: "Automated", icon: BarChart3 },
+    ],
+    tags: ["ETL", "BigQuery", "Multi-Channel", "Attribution"],
+  },
+  {
+    title: "Cold Outreach Workflow Automation",
+    client: "Sales Team",
+    headline: "Automating cold outreach insights to avoid wasted pipeline and improve follow-up efficiency",
+    description: "Built automated workflows using EmailBison and Slack webhooks to track cold outreach performance and surface actionable insights.",
+    background: "Sales was sending cold emails but had no visibility into what was working or why prospects weren't responding.",
+    problem: "Follow-up timing was arbitrary, messaging wasn't being refined, and pipeline was being wasted on unresponsive leads.",
+    whatIBuilt: [
+      "EmailBison integration for outreach tracking",
+      "Slack webhooks for real-time response notifications",
+      "Objection categorization and tracking",
+      "Follow-up sequence optimization based on engagement data",
+    ],
+    outcome: "Sales refined messaging based on structured objections and saw improved conversion in follow-up sequences.",
+    emotionalShift: "Cold outreach became a data-informed process rather than a numbers game.",
+    metrics: [
+      { label: "Follow-up Rate", value: "Improved", icon: TrendingUp },
+      { label: "Objection Tracking", value: "Automated", icon: Target },
+      { label: "Messaging", value: "Refined", icon: BarChart3 },
+    ],
+    tags: ["EmailBison", "Slack", "Automation", "Sales"],
+  },
+  {
+    title: "Mixpanel Event Data Extraction",
+    client: "Product Analytics Team",
+    headline: "Scraping Mixpanel event streams when APIs weren't available — without breaking data availability",
+    description: "Built authenticated Chrome automation to extract Mixpanel event data when standard APIs weren't available, enabling advanced product analytics.",
+    background: "The team needed access to detailed Mixpanel event streams for churn prediction and funnel analysis, but their plan didn't include API access.",
+    problem: "Without upgrading their Mixpanel plan, they had no way to get event data into their warehouse for advanced analysis.",
+    whatIBuilt: [
+      "Authenticated Chrome automation for data extraction",
+      "Reliable scheduling without breaking Mixpanel sessions",
+      "Data transformation and loading into BigQuery",
+      "Churn prediction and funnel bottleneck dashboards",
+    ],
+    outcome: "The team gained reliable access to Mixpanel event streams without upgrading, enabling churn predictions and funnel bottleneck analysis.",
+    emotionalShift: "Product decisions became data-informed without requiring expensive tool upgrades.",
+    metrics: [
+      { label: "Data Access", value: "Unlocked", icon: TrendingUp },
+      { label: "Cost Savings", value: "Significant", icon: Target },
+      { label: "Analysis", value: "Enabled", icon: BarChart3 },
+    ],
+    tags: ["Mixpanel", "Automation", "BigQuery", "Product Analytics"],
   },
 ];
 
@@ -165,6 +276,9 @@ function CaseStudyModal({ study, open, onClose }: { study: CaseStudy | null; ope
 export function CaseStudies() {
   const { ref, isVisible } = useScrollAnimation();
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedStudies = showAll ? caseStudies : caseStudies.slice(0, 3);
 
   return (
     <section id="case-studies" className="py-24 relative">
@@ -183,7 +297,7 @@ export function CaseStudies() {
           ref={ref}
           className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children ${isVisible ? "visible" : ""}`}
         >
-          {caseStudies.map((study, index) => (
+          {displayedStudies.map((study, index) => (
             <div
               key={index}
               onClick={() => setSelectedStudy(study)}
@@ -236,6 +350,25 @@ export function CaseStudies() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Show More/Less Button */}
+        <div className="flex justify-center mt-12">
+          <Button
+            variant="outline"
+            onClick={() => setShowAll(!showAll)}
+            className="glass-subtle border-[hsl(var(--glass-border))] hover:bg-primary/10"
+          >
+            {showAll ? (
+              <>
+                Show Less <ChevronUp className="ml-2 h-4 w-4" />
+              </>
+            ) : (
+              <>
+                View All {caseStudies.length} Case Studies <ChevronDown className="ml-2 h-4 w-4" />
+              </>
+            )}
+          </Button>
         </div>
       </div>
 
