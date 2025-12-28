@@ -1,10 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
-import { Sparkles, Trophy, ChevronUp, Eye, MousePointer } from "lucide-react";
+import { Sparkles, Trophy, ChevronUp } from "lucide-react";
 
 interface Achievement {
   id: string;
   title: string;
-  description: string;
   icon: string;
   unlocked: boolean;
 }
@@ -13,19 +12,18 @@ export function Gamification() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [sectionsVisited, setSectionsVisited] = useState<Set<string>>(new Set());
   const [clicks, setClicks] = useState(0);
-  const [showWidget, setShowWidget] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [showAchievement, setShowAchievement] = useState(false);
   const [latestAchievement, setLatestAchievement] = useState<Achievement | null>(null);
-  const [sparkles, setSparkles] = useState<{ id: number; x: number; y: number }[]>([]);
   
   const totalSections = 9;
 
   const [achievements, setAchievements] = useState<Achievement[]>([
-    { id: "explorer", title: "Explorer", description: "Visit 3 sections", icon: "🔍", unlocked: false },
-    { id: "curious", title: "Curious Mind", description: "Visit 5 sections", icon: "🧠", unlocked: false },
-    { id: "dedicated", title: "Dedicated", description: "Visit all sections", icon: "⭐", unlocked: false },
-    { id: "clicker", title: "Click Master", description: "Click 10 times", icon: "👆", unlocked: false },
-    { id: "scroll", title: "Deep Diver", description: "Scroll to 80%", icon: "🏊", unlocked: false },
+    { id: "explorer", title: "Explorer", icon: "🔍", unlocked: false },
+    { id: "curious", title: "Curious", icon: "🧠", unlocked: false },
+    { id: "dedicated", title: "Dedicated", icon: "⭐", unlocked: false },
+    { id: "clicker", title: "Clicker", icon: "👆", unlocked: false },
+    { id: "scroll", title: "Deep Diver", icon: "🏊", unlocked: false },
   ]);
 
   const unlockAchievement = useCallback((id: string) => {
@@ -34,23 +32,19 @@ export function Gamification() {
       if (achievement && !achievement.unlocked) {
         setLatestAchievement({ ...achievement, unlocked: true });
         setShowAchievement(true);
-        setTimeout(() => setShowAchievement(false), 3000);
+        setTimeout(() => setShowAchievement(false), 2500);
         return prev.map(a => a.id === id ? { ...a, unlocked: true } : a);
       }
       return prev;
     });
   }, []);
 
-  // Track scroll and sections
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = (scrollTop / docHeight) * 100;
       setScrollProgress(Math.min(progress, 100));
-
-      // Show widget after some scrolling
-      if (scrollTop > 200) setShowWidget(true);
 
       const sections = document.querySelectorAll("section[id]");
       sections.forEach((section) => {
@@ -66,155 +60,135 @@ export function Gamification() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Track clicks for interactivity
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      setClicks(prev => prev + 1);
-      
-      // Create sparkle effect
-      const sparkle = {
-        id: Date.now(),
-        x: e.clientX,
-        y: e.clientY,
-      };
-      setSparkles(prev => [...prev, sparkle]);
-      setTimeout(() => {
-        setSparkles(prev => prev.filter(s => s.id !== sparkle.id));
-      }, 600);
-    };
-
+    const handleClick = () => setClicks(prev => prev + 1);
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
   }, []);
 
-  // Check achievements
   useEffect(() => {
     if (sectionsVisited.size >= 3) unlockAchievement("explorer");
     if (sectionsVisited.size >= 5) unlockAchievement("curious");
     if (sectionsVisited.size >= totalSections) unlockAchievement("dedicated");
-    if (clicks >= 10) unlockAchievement("clicker");
-    if (scrollProgress >= 80) unlockAchievement("scroll");
+    if (clicks >= 15) unlockAchievement("clicker");
+    if (scrollProgress >= 85) unlockAchievement("scroll");
   }, [sectionsVisited.size, clicks, scrollProgress, unlockAchievement]);
 
   const unlockedCount = achievements.filter(a => a.unlocked).length;
-  const explorationScore = Math.round((sectionsVisited.size / totalSections) * 100);
+  const progressPercent = (sectionsVisited.size / totalSections) * 100;
 
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-muted/30">
+      {/* Subtle scroll progress - thin line at top */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-transparent">
         <div
-          className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-150 ease-out shadow-sm shadow-purple-500/50"
+          className="h-full bg-gradient-to-r from-purple-500/60 to-blue-500/60 transition-all duration-200"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      {/* Click Sparkles */}
-      {sparkles.map(sparkle => (
-        <div
-          key={sparkle.id}
-          className="fixed z-50 pointer-events-none"
-          style={{ left: sparkle.x, top: sparkle.y }}
-        >
-          <Sparkles className="h-6 w-6 text-yellow-400 animate-ping" />
-        </div>
-      ))}
-
-      {/* Main Widget - Bottom Right */}
+      {/* Minimal floating indicator - bottom right */}
       <div
-        className={`fixed bottom-6 right-6 z-40 transition-all duration-500 ${
-          showWidget ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-        }`}
+        className="fixed bottom-5 right-5 z-40"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="bg-background/90 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl shadow-purple-500/10 overflow-hidden w-64">
-          {/* Header */}
-          <div className="px-4 py-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-b border-border/30">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-                  <Eye className="h-4 w-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Exploration</p>
-                  <p className="text-sm font-bold text-foreground">{explorationScore}% Complete</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20">
-                <Trophy className="h-3 w-3 text-yellow-500" />
-                <span className="text-xs font-bold text-yellow-500">{unlockedCount}/{achievements.length}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="px-4 py-3">
-            <div className="flex justify-between text-xs text-muted-foreground mb-2">
-              <span>Sections Discovered</span>
-              <span className="font-medium text-foreground">{sectionsVisited.size}/{totalSections}</span>
-            </div>
-            <div className="h-2 bg-muted/50 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transition-all duration-500"
-                style={{ width: `${(sectionsVisited.size / totalSections) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Achievements */}
-          <div className="px-4 pb-3">
-            <p className="text-xs text-muted-foreground mb-2">Achievements</p>
-            <div className="flex gap-2 flex-wrap">
-              {achievements.map(achievement => (
+        {/* Expanded state */}
+        <div
+          className={`absolute bottom-0 right-0 transition-all duration-300 ease-out ${
+            isHovered 
+              ? "opacity-100 translate-y-0 pointer-events-auto" 
+              : "opacity-0 translate-y-2 pointer-events-none"
+          }`}
+        >
+          <div className="bg-background/80 backdrop-blur-md border border-border/40 rounded-xl p-3 mb-14 shadow-lg min-w-[140px]">
+            <p className="text-[10px] text-muted-foreground mb-2">Badges</p>
+            <div className="flex gap-1.5">
+              {achievements.map(a => (
                 <div
-                  key={achievement.id}
-                  className={`h-8 w-8 rounded-lg flex items-center justify-center text-sm transition-all duration-300 cursor-default ${
-                    achievement.unlocked
-                      ? "bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 scale-100"
-                      : "bg-muted/30 border border-border/30 grayscale opacity-40"
+                  key={a.id}
+                  className={`h-6 w-6 rounded text-xs flex items-center justify-center transition-all ${
+                    a.unlocked 
+                      ? "bg-yellow-500/10 border border-yellow-500/30" 
+                      : "bg-muted/20 border border-border/20 opacity-30"
                   }`}
-                  title={achievement.unlocked ? `${achievement.title}: ${achievement.description}` : "???"}
+                  title={a.unlocked ? a.title : "???"}
                 >
-                  {achievement.unlocked ? achievement.icon : "?"}
+                  {a.unlocked ? a.icon : "?"}
                 </div>
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Hint */}
-          <div className="px-4 py-2 bg-muted/20 border-t border-border/30">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <MousePointer className="h-3 w-3" />
-              <span>Scroll & explore to unlock badges!</span>
-            </div>
+        {/* Compact circular indicator */}
+        <div className="relative h-11 w-11 cursor-pointer">
+          {/* Background circle */}
+          <div className="absolute inset-0 rounded-full bg-background/70 backdrop-blur-sm border border-border/40 shadow-md" />
+          
+          {/* Progress ring */}
+          <svg className="absolute inset-0 -rotate-90" viewBox="0 0 44 44">
+            <circle
+              cx="22"
+              cy="22"
+              r="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="text-muted/20"
+            />
+            <circle
+              cx="22"
+              cy="22"
+              r="18"
+              fill="none"
+              stroke="url(#progressGradient)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray={`${progressPercent * 1.13} 113`}
+              className="transition-all duration-500"
+            />
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#a855f7" />
+                <stop offset="100%" stopColor="#3b82f6" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          {/* Center content */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            {unlockedCount > 0 ? (
+              <span className="text-xs font-bold text-foreground">{unlockedCount}</span>
+            ) : (
+              <Sparkles className="h-3.5 w-3.5 text-purple-400/70" />
+            )}
           </div>
         </div>
       </div>
 
-      {/* Scroll to top button */}
+      {/* Scroll to top - appears after scrolling */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 left-6 z-40 h-12 w-12 rounded-full bg-background/90 backdrop-blur-md border border-border/50 shadow-lg flex items-center justify-center hover:scale-110 transition-all duration-300 ${
-          scrollProgress > 30 ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+        className={`fixed bottom-5 left-5 z-40 h-9 w-9 rounded-full bg-background/70 backdrop-blur-sm border border-border/40 shadow-md flex items-center justify-center hover:bg-background/90 transition-all duration-300 ${
+          scrollProgress > 40 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        <ChevronUp className="h-5 w-5 text-foreground" />
+        <ChevronUp className="h-4 w-4 text-muted-foreground" />
       </button>
 
-      {/* Achievement Popup */}
+      {/* Subtle achievement toast */}
       <div
-        className={`fixed top-16 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 px-6 py-4 rounded-2xl bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 backdrop-blur-xl border border-yellow-500/30 shadow-2xl shadow-yellow-500/20 transition-all duration-500 ${
+        className={`fixed bottom-20 right-5 z-50 flex items-center gap-2 px-3 py-2 rounded-lg bg-yellow-500/10 backdrop-blur-md border border-yellow-500/20 shadow-lg transition-all duration-400 ${
           showAchievement
-            ? "opacity-100 translate-y-0 scale-100"
-            : "opacity-0 -translate-y-8 scale-95 pointer-events-none"
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 translate-x-4 pointer-events-none"
         }`}
       >
-        <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-2xl shadow-lg">
-          {latestAchievement?.icon}
-        </div>
+        <span className="text-base">{latestAchievement?.icon}</span>
         <div>
-          <p className="text-xs font-medium text-yellow-500">Achievement Unlocked!</p>
-          <p className="text-lg font-bold text-foreground">{latestAchievement?.title}</p>
-          <p className="text-xs text-muted-foreground">{latestAchievement?.description}</p>
+          <p className="text-[10px] text-yellow-500/80">Unlocked</p>
+          <p className="text-xs font-medium text-foreground">{latestAchievement?.title}</p>
         </div>
       </div>
     </>
