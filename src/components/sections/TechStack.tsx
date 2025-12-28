@@ -111,14 +111,17 @@ export function TechStack() {
               <div className="w-3 h-3 rounded-full bg-green-500/70" />
               <span className="text-xs text-muted-foreground ml-2">pipeline.py</span>
             </div>
-            <code className="text-sm text-muted-foreground block">
-              <span className="text-purple-500">from</span> data_pipeline <span className="text-purple-500">import</span> extract, transform, load{"\n"}
-              <span className="text-purple-500">from</span> analytics <span className="text-purple-500">import</span> track_conversions{"\n\n"}
-              <span className="text-blue-500">def</span> <span className="text-green-500">build_insights</span>(raw_data):{"\n"}
-              {"    "}cleaned = transform(raw_data){"\n"}
-              {"    "}enriched = track_conversions(cleaned){"\n"}
-              {"    "}<span className="text-purple-500">return</span> load(enriched, destination=<span className="text-orange-500">"bigquery"</span>)
-            </code>
+            <pre className="text-sm text-muted-foreground">
+              <code>
+<span className="text-purple-500">from</span> data_pipeline <span className="text-purple-500">import</span> extract, transform, load
+<span className="text-purple-500">from</span> analytics <span className="text-purple-500">import</span> track_conversions
+
+<span className="text-blue-500">def</span> <span className="text-green-500">build_insights</span>(raw_data):
+    cleaned = transform(raw_data)
+    enriched = track_conversions(cleaned)
+    <span className="text-purple-500">return</span> load(enriched, destination=<span className="text-orange-500">"bigquery"</span>)
+              </code>
+            </pre>
           </div>
         </div>
       </div>
