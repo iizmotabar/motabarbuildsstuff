@@ -88,10 +88,8 @@ export function Packages() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
-              className={`relative glass-strong glow-border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group ${
-                pkg.featured
-                  ? "border-purple-500/50 shadow-lg shadow-purple-500/10"
-                  : ""
+              className={`relative border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:-translate-y-1 ${
+                pkg.featured ? "border-purple-500/30" : ""
               }`}
             >
               {pkg.featured && (
@@ -105,7 +103,7 @@ export function Packages() {
                 <CardTitle className="text-lg font-semibold">
                   {pkg.name}
                 </CardTitle>
-                <p className="text-2xl font-semibold mt-2 text-gradient">{pkg.price}</p>
+                <p className="text-2xl font-semibold mt-2">{pkg.price}</p>
                 <p className="text-sm text-muted-foreground mt-2">
                   {pkg.description}
                 </p>
@@ -114,16 +112,13 @@ export function Packages() {
                 <ul className="space-y-3">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mt-0.5 flex-shrink-0">
-                        <Check className="h-2.5 w-2.5 text-white" />
-                      </div>
-                      <span>{feature}</span>
+                      <Check className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <Button
-                  variant={pkg.featured ? "default" : "outline"}
-                  className={`w-full mt-6 ${pkg.featured ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500" : "glass-card"}`}
+                  className="w-full mt-6 bg-gradient-to-r from-blue-600/90 to-purple-600/90 hover:from-blue-600 hover:to-purple-600 text-white border-0"
                   onClick={scrollToContact}
                 >
                   Get Started
