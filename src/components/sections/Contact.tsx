@@ -36,15 +36,20 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-surface">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-24 md:py-32 bg-surface relative">
+      {/* Decorative elements */}
+      <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-600/10 blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-gradient-to-br from-purple-600/10 to-cyan-500/10 blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-xl mx-auto">
           <div
             ref={headerRef}
             className={`text-center mb-12 animate-on-scroll ${headerVisible ? "visible" : ""}`}
           >
             <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
-              Ready to fix your tracking and grow with better data?
+              Ready to fix your tracking and grow with{" "}
+              <span className="text-gradient">better data?</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
               Let's discuss your needs and find the right solution.
@@ -56,23 +61,23 @@ export function Contact() {
             className={`animate-on-scroll-scale ${formVisible ? "visible" : ""}`}
           >
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform" asChild>
+              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500" asChild>
                 <a href="https://calendly.com/iizmotabar" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="mr-2 h-4 w-4" />
+                  <Calendar className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                   Book on Calendly
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="h-12 px-8 hover:scale-105 transition-transform" asChild>
+              <Button size="lg" variant="outline" className="h-12 px-8 hover:scale-105 transition-transform glass-card glow-border group" asChild>
                 <a href="https://www.linkedin.com/in/iizmotabar" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="mr-2 h-4 w-4" />
+                  <Linkedin className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                   Connect on LinkedIn
                 </a>
               </Button>
             </div>
 
-            <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
+            <form onSubmit={handleSubmit} className="glass-strong p-8 space-y-6 glow-border">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                 <Input
                   id="name"
                   type="text"
@@ -82,12 +87,12 @@ export function Contact() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
-                  className="h-12 transition-all focus:scale-[1.01]"
+                  className="h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-sm font-medium">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -97,12 +102,12 @@ export function Contact() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
-                  className="h-12 transition-all focus:scale-[1.01]"
+                  className="h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="message" className="text-sm font-medium">Message</Label>
                 <Textarea
                   id="message"
                   placeholder="Tell me about your project..."
@@ -112,14 +117,14 @@ export function Contact() {
                   }
                   required
                   rows={5}
-                  className="transition-all focus:scale-[1.01]"
+                  className="transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20"
                 />
               </div>
 
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-12 hover:scale-[1.02] transition-transform"
+                className="w-full h-12 hover:scale-[1.02] transition-transform bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -132,7 +137,7 @@ export function Contact() {
               </p>
               <a
                 href="mailto:motabar.javaid@gmail.com"
-                className="inline-flex items-center gap-2 mt-2 text-foreground hover:underline group"
+                className="inline-flex items-center gap-2 mt-2 text-foreground hover:text-gradient transition-colors group"
               >
                 <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 motabar.javaid@gmail.com
