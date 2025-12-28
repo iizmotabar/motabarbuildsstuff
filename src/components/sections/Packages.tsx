@@ -68,7 +68,7 @@ export function Packages() {
   };
 
   return (
-    <section id="packages" className="py-24 md:py-32 relative">
+    <section id="packages" className="py-16 md:py-20 relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="packages" className="top-32 right-[20%] hidden md:block" />
       

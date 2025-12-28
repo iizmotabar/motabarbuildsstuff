@@ -9,6 +9,9 @@ interface ContactRequest {
   name: string;
   email: string;
   message: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -17,9 +20,9 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message }: ContactRequest = await req.json();
+    const { name, email, message, utm_source, utm_medium, utm_campaign }: ContactRequest = await req.json();
     
-    console.log("Processing contact form submission:", { name, email });
+    console.log("Processing contact form submission:", { name, email, utm_source, utm_medium, utm_campaign });
 
     // 1. Create HubSpot contact
     const hubspotApiKey = Deno.env.get("HUBSPOT_API_KEY");
@@ -37,6 +40,9 @@ const handler = async (req: Request): Promise<Response> => {
               lastname: name.split(" ").slice(1).join(" ") || "",
               email: email,
               message: message,
+              hs_analytics_source: utm_source || "",
+              utm_medium: utm_medium || "",
+              utm_campaign: utm_campaign || "",
             },
           }),
         });

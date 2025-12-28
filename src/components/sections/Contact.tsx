@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, Mail, Calendar, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,16 @@ import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button
 import { CollectibleOrb } from "@/components/CollectibleOrb";
 import { supabase } from "@/integrations/supabase/client";
 
+// Helper to get UTM params from URL
+const getUtmParams = () => {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+  };
+};
+
 export function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,6 +28,15 @@ export function Contact() {
     email: "",
     message: "",
   });
+  const [utmData, setUtmData] = useState({
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+  });
+
+  useEffect(() => {
+    setUtmData(getUtmParams());
+  }, []);
 
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: formRef, isVisible: formVisible } = useScrollAnimation();
@@ -28,7 +47,7 @@ export function Contact() {
 
     try {
       const { error } = await supabase.functions.invoke("submit-contact", {
-        body: formData,
+        body: { ...formData, ...utmData },
       });
 
       if (error) throw error;
@@ -52,7 +71,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-surface relative">
+    <section id="contact" className="py-16 md:py-20 bg-surface relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="contact" className="top-20 left-[10%] hidden md:block" />
       
@@ -103,7 +122,7 @@ export function Contact() {
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Your name"
+                  placeholder="Batman, Elon, or your actual name"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -118,7 +137,7 @@ export function Contact() {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="you@example.com"
+                  placeholder="your.real@email.com (no catfish please)"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -132,7 +151,7 @@ export function Contact() {
                 <Label htmlFor="message" className="text-sm font-medium">Message</Label>
                 <Textarea
                   id="message"
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me your tracking woes... or just say hi, I don't bite 🦈"
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
