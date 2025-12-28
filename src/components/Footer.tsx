@@ -9,7 +9,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-border/50 py-12 overflow-hidden">
+    <footer id="main-footer" data-track="footer" className="relative border-t border-border/50 py-12 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-transparent" />
       
@@ -53,12 +53,14 @@ export function Footer() {
                 href="https://www.linkedin.com/in/iizmotabar"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-track="footer-social-linkedin"
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-blue-500/50 hover:scale-110 transition-all"
               >
                 <Linkedin className="w-4 h-4 text-blue-400" />
               </a>
               <a
                 href="mailto:motabar.javaid@gmail.com"
+                data-track="footer-social-email"
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-purple-500/50 hover:scale-110 transition-all"
               >
                 <Mail className="w-4 h-4 text-purple-400" />
@@ -67,6 +69,7 @@ export function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-track="footer-social-github"
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-cyan-500/50 hover:scale-110 transition-all"
               >
                 <Github className="w-4 h-4 text-cyan-400" />
@@ -89,6 +92,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <button
               onClick={scrollToTop}
+              data-track="footer-back-to-top"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Back to top ↑

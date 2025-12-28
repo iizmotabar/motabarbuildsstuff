@@ -27,7 +27,7 @@ export function Testimonials() {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 md:py-20">
+    <section id="testimonials" data-track="section-testimonials" className="py-16 md:py-20">
       <div className="container mx-auto px-6">
         <div
           ref={headerRef}

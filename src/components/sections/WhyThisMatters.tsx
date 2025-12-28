@@ -6,7 +6,7 @@ export function WhyThisMatters() {
   const { ref: flowRef, isVisible: flowVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 md:py-20">
+    <section id="why-this-matters" data-track="section-why-this-matters" className="py-16 md:py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div

@@ -48,7 +48,7 @@ export function TechStack() {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
 
   return (
-    <section id="tech-stack" className="py-16 md:py-20 relative overflow-hidden">
+    <section id="tech-stack" data-track="section-tech-stack" className="py-16 md:py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-transparent rounded-full blur-3xl" />
