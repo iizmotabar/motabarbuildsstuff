@@ -40,7 +40,7 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <Button size="lg" className="h-12 px-8 text-base group" asChild>
+            <Button size="lg" className="h-12 px-8 text-base group bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 border border-white/10 backdrop-blur-sm" asChild>
               <a href="#contact">
                 Book a Consultation
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -61,7 +61,7 @@ export function Contact() {
             className={`animate-on-scroll-scale ${formVisible ? "visible" : ""}`}
           >
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500" asChild>
+              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 border border-white/10 backdrop-blur-sm" asChild>
                 <a href="https://calendly.com/iizmotabar" target="_blank" rel="noopener noreferrer">
                   <Calendar className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                   Book on Calendly
@@ -124,7 +124,7 @@ export function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-12 hover:scale-[1.02] transition-transform bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500"
+                className="w-full h-12 hover:scale-[1.02] transition-transform bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 border border-white/10 backdrop-blur-sm"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
