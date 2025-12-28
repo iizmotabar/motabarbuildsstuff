@@ -13,6 +13,7 @@ import { Contact } from "@/components/sections/Contact";
 import { FloatingElements } from "@/components/FloatingElements";
 import { GradientOrbs } from "@/components/GradientOrbs";
 import { GridPattern } from "@/components/GridPattern";
+import { Gamification } from "@/components/Gamification";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
       <GridPattern />
       <GradientOrbs />
       <FloatingElements />
+      <Gamification />
       
       {/* Content */}
       <div className="relative z-10">
