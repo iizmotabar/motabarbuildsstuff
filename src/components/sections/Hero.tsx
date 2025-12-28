@@ -12,7 +12,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 relative">
+    <section className="min-h-[90vh] flex items-center justify-center pt-8 md:pt-12 relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="hero" className="top-40 right-[15%] hidden md:block" />
       
