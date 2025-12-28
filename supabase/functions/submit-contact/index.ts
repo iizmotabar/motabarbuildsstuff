@@ -80,7 +80,7 @@ const handler = async (req: Request): Promise<Response> => {
           body: JSON.stringify({
             from: "Motabar's Website <onboarding@resend.dev>",
             to: ["motabar.javaid@gmail.com"],
-            subject: `[Motabar.com] New Lead: ${name}`,
+            subject: `New Lead from motabar.builds" ${name}`,
             html: `
 <!DOCTYPE html>
 <html>
