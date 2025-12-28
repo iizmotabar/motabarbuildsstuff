@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
+import { CollectibleOrb } from "@/components/CollectibleOrb";
 
 export function Contact() {
   const { toast } = useToast();
@@ -37,6 +39,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 md:py-32 bg-surface relative">
+      {/* Hidden collectible orb */}
+      <CollectibleOrb id="contact" className="top-20 left-[10%] hidden md:block" />
+      
       {/* Decorative elements */}
       <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-600/10 blur-3xl" />
       <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-gradient-to-br from-purple-600/10 to-cyan-500/10 blur-3xl" />
@@ -61,12 +66,15 @@ export function Contact() {
             className={`animate-on-scroll-scale ${formVisible ? "visible" : ""}`}
           >
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10" asChild>
-                <a href="https://calendly.com/iizmotabar" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform text-purple-400" />
-                  Book on Calendly
-                </a>
-              </Button>
+              <SpinningGradientButton
+                size="lg"
+                href="https://calendly.com/iizmotabar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Calendar className="h-4 w-4 group-hover:rotate-12 transition-transform text-purple-400" />
+                Book on Calendly
+              </SpinningGradientButton>
               <Button size="lg" variant="outline" className="h-12 px-8 hover:scale-105 transition-transform glass-card glow-border group" asChild>
                 <a href="https://www.linkedin.com/in/iizmotabar" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
@@ -121,14 +129,14 @@ export function Contact() {
                 />
               </div>
 
-              <Button
+              <SpinningGradientButton
                 type="submit"
                 size="lg"
-                className="w-full h-12 hover:scale-[1.02] transition-transform bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10"
                 disabled={isSubmitting}
+                className="w-full"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
+              </SpinningGradientButton>
             </form>
 
             <div className="mt-8 text-center">

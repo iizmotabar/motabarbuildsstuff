@@ -1,5 +1,7 @@
 import { ArrowRight, ChevronDown, Terminal, Database, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
+import { CollectibleOrb } from "@/components/CollectibleOrb";
 
 export function Hero() {
   const scrollToServices = () => {
@@ -11,6 +13,9 @@ export function Hero() {
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 relative">
+      {/* Hidden collectible orb */}
+      <CollectibleOrb id="hero" className="top-40 right-[15%] hidden md:block" />
+      
       {/* Decorative tech icons */}
       <div className="absolute top-32 left-10 md:left-20 opacity-20 animate-pulse-glow">
         <Terminal className="w-8 h-8 text-blue-500" />
@@ -40,12 +45,10 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <Button size="lg" className="h-12 px-8 text-base group bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10" asChild>
-              <a href="#contact">
-                Book a Consultation
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+            <SpinningGradientButton size="lg" href="#contact">
+              Book a Consultation
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </SpinningGradientButton>
             <Button
               variant="outline"
               size="lg"
