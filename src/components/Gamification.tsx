@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { Trophy, ChevronUp, Sparkles } from "lucide-react";
+import { Trophy, ChevronUp, Sparkles, HelpCircle, X } from "lucide-react";
 
 interface Collectible {
   id: string;
@@ -17,6 +17,8 @@ export function Gamification() {
   const [showCollected, setShowCollected] = useState(false);
   const [lastCollected, setLastCollected] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [hintDismissed, setHintDismissed] = useState(false);
 
   const collectedCount = collectibles.filter(c => c.collected).length;
   const totalCollectibles = collectibles.length;
@@ -27,6 +29,7 @@ export function Gamification() {
       if (item && !item.collected) {
         setLastCollected(id);
         setShowCollected(true);
+        setHintDismissed(true); // Hide hint after first collection
         setTimeout(() => setShowCollected(false), 2000);
         return prev.map(c => c.id === id ? { ...c, collected: true } : c);
       }
@@ -41,6 +44,26 @@ export function Gamification() {
       delete (window as any).collectOrb;
     };
   }, [collectOrb]);
+
+  // Show hint after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!hintDismissed && collectedCount === 0) {
+        setShowHint(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [hintDismissed, collectedCount]);
+
+  // Auto-hide hint after some time
+  useEffect(() => {
+    if (showHint) {
+      const timer = setTimeout(() => {
+        setShowHint(false);
+      }, 8000);
+      return () => clearTimeout(timer);
+    }
+  }, [showHint]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,6 +89,37 @@ export function Gamification() {
         />
       </div>
 
+      {/* Onboarding hint */}
+      <div
+        className={`fixed bottom-20 right-5 z-50 max-w-[220px] transition-all duration-500 ${
+          showHint && !hintDismissed
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <div className="bg-background/95 backdrop-blur-md border border-purple-500/20 rounded-xl p-4 shadow-xl shadow-purple-500/10">
+          <button
+            onClick={() => setHintDismissed(true)}
+            className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <X className="h-3 w-3" />
+          </button>
+          <div className="flex items-start gap-3">
+            <div className="h-8 w-8 rounded-full bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="h-4 w-4 text-purple-400" />
+            </div>
+            <div>
+              <p className="text-xs font-medium text-foreground mb-1">Hidden orbs!</p>
+              <p className="text-[11px] text-muted-foreground leading-relaxed">
+                Look for glowing purple orbs scattered across the page. Click them to collect!
+              </p>
+            </div>
+          </div>
+          {/* Arrow pointing to indicator */}
+          <div className="absolute -bottom-2 right-8 w-4 h-4 bg-background/95 border-r border-b border-purple-500/20 transform rotate-45" />
+        </div>
+      </div>
+
       {/* Minimal collectible counter - bottom right */}
       <div
         className="fixed bottom-5 right-5 z-40"
@@ -80,7 +134,7 @@ export function Gamification() {
         >
           <div className="bg-background/90 backdrop-blur-md border border-border/40 rounded-lg px-3 py-2 shadow-lg text-xs whitespace-nowrap">
             <p className="text-muted-foreground">
-              {allCollected ? "All orbs found! 🎉" : "Find hidden orbs on the page"}
+              {allCollected ? "All orbs found! 🎉" : `${collectedCount}/${totalCollectibles} orbs collected`}
             </p>
             <div className="flex gap-1 mt-1.5">
               {collectibles.map(c => (
@@ -100,6 +154,11 @@ export function Gamification() {
         {/* Compact indicator */}
         <div className={`relative h-10 w-10 cursor-pointer transition-transform ${isHovered ? "scale-110" : ""}`}>
           <div className="absolute inset-0 rounded-full bg-background/80 backdrop-blur-sm border border-border/40 shadow-md" />
+          
+          {/* Pulsing ring for attention when no orbs collected */}
+          {collectedCount === 0 && !hintDismissed && (
+            <span className="absolute inset-0 rounded-full border-2 border-purple-500/30 animate-ping" />
+          )}
           
           {/* Progress ring */}
           <svg className="absolute inset-0 -rotate-90" viewBox="0 0 40 40">
@@ -134,8 +193,10 @@ export function Gamification() {
           <div className="absolute inset-0 flex items-center justify-center">
             {allCollected ? (
               <Trophy className="h-4 w-4 text-yellow-500" />
+            ) : collectedCount > 0 ? (
+              <span className="text-xs font-bold text-foreground">{collectedCount}</span>
             ) : (
-              <Sparkles className="h-4 w-4 text-purple-400/70" />
+              <HelpCircle className="h-4 w-4 text-purple-400/70" />
             )}
           </div>
         </div>
@@ -161,7 +222,7 @@ export function Gamification() {
       >
         <Sparkles className="h-4 w-4 text-purple-400" />
         <span className="text-xs font-medium text-foreground">
-          Orb collected! ({collectedCount}/{totalCollectibles})
+          +1 orb! ({collectedCount}/{totalCollectibles})
         </span>
       </div>
     </>
