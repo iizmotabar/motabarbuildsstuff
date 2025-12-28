@@ -24,7 +24,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Cloud & Analytics Engineer helping businesses understand what's working and scale with accurate data.
+              Your go-to data guy. Fixing tracking, building pipelines, and turning messy numbers into insights.
             </p>
           </div>
 

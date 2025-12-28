@@ -25,9 +25,9 @@ export function WhatIDo() {
             </h2>
             
             <p className="mt-6 text-lg text-muted-foreground text-center text-balance">
-              As a Cloud & Analytics Engineer, I help you make sense of your data. 
-              From building scalable data pipelines and cloud infrastructure to fixing tracking 
-              and automating reporting — I turn chaos into clarity so you can optimize with confidence.
+              I'm the data guy you call when things are messy. 
+              Whether it's building pipelines, fixing tracking, setting up dashboards, 
+              or automating reports — I turn chaos into clarity so you can make decisions with confidence.
             </p>
           </div>
 
