@@ -61,9 +61,9 @@ export function Contact() {
             className={`animate-on-scroll-scale ${formVisible ? "visible" : ""}`}
           >
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 border border-white/10 backdrop-blur-sm" asChild>
+              <Button size="lg" className="h-12 px-8 hover:scale-105 transition-transform group bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10" asChild>
                 <a href="https://calendly.com/iizmotabar" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                  <Calendar className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform text-purple-400" />
                   Book on Calendly
                 </a>
               </Button>
@@ -124,7 +124,7 @@ export function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-12 hover:scale-[1.02] transition-transform bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 border border-white/10 backdrop-blur-sm"
+                className="w-full h-12 hover:scale-[1.02] transition-transform bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
