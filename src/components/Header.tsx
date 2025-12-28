@@ -28,7 +28,7 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="text-lg font-semibold tracking-tight">
-            motabar.builds.stuff
+            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">motabar</span>.builds.stuff
           </a>
 
           {/* Desktop Navigation */}

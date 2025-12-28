@@ -25,9 +25,9 @@ export function WhatIDo() {
             </h2>
             
             <p className="mt-6 text-lg text-muted-foreground text-center text-balance">
-              You're spending on marketing but not sure what's working. 
-              I fix tracking, unify data across platforms, and automate reporting 
-              so you can stop guessing and start optimizing.
+              As a Cloud & Analytics Engineer, I help you make sense of your data. 
+              From building scalable data pipelines and cloud infrastructure to fixing tracking 
+              and automating reporting — I turn chaos into clarity so you can optimize with confidence.
             </p>
           </div>
 
