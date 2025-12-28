@@ -128,7 +128,7 @@ export function Services() {
 
         <div
           ref={gridRef}
-          className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
         >
           {services.map((service, index) => (
             <Card
