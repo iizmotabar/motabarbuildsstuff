@@ -29,29 +29,62 @@ export function CollectibleOrb({ id, className }: CollectibleOrbProps) {
       onClick={handleCollect}
       className={cn(
         "absolute z-20 group cursor-pointer",
-        "h-6 w-6 rounded-full",
-        "transition-all duration-300",
+        "h-8 w-8 rounded-full",
+        "transition-all duration-300 hover:scale-125",
         isAnimating && "animate-ping",
         className
       )}
-      title="Click to collect!"
+      aria-label="Collect orb"
     >
-      {/* Outer glow */}
-      <span className="absolute inset-0 rounded-full bg-purple-500/20 blur-md group-hover:bg-purple-500/40 transition-all" />
+      {/* Large outer glow - more visible */}
+      <span className="absolute -inset-3 rounded-full bg-purple-500/10 blur-xl animate-pulse" />
       
       {/* Pulsing ring */}
-      <span className="absolute inset-0 rounded-full border border-purple-500/30 animate-ping opacity-75" />
+      <span 
+        className="absolute inset-0 rounded-full border border-purple-400/40"
+        style={{ animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite" }}
+      />
+      
+      {/* Secondary ring */}
+      <span 
+        className="absolute inset-1 rounded-full border border-purple-400/20"
+        style={{ animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite 0.5s" }}
+      />
       
       {/* Core orb */}
       <span 
-        className="absolute inset-1 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 group-hover:from-purple-300 group-hover:to-blue-400 transition-all shadow-lg shadow-purple-500/30"
+        className="absolute inset-2 rounded-full bg-gradient-to-br from-purple-400 via-purple-500 to-blue-500 group-hover:from-purple-300 group-hover:to-blue-400 transition-all shadow-lg shadow-purple-500/50"
         style={{
           animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         }}
       />
       
-      {/* Sparkle */}
-      <span className="absolute top-1 left-1.5 h-1 w-1 rounded-full bg-white/80" />
+      {/* Inner sparkle */}
+      <span className="absolute top-2.5 left-3 h-1.5 w-1.5 rounded-full bg-white/90" />
+      <span className="absolute top-3.5 left-2.5 h-1 w-1 rounded-full bg-white/60" />
+      
+      {/* Floating particles effect */}
+      <span 
+        className="absolute -top-1 left-1/2 h-1 w-1 rounded-full bg-purple-400/60"
+        style={{ animation: "float 3s ease-in-out infinite" }}
+      />
+      <span 
+        className="absolute top-1/2 -right-1 h-0.5 w-0.5 rounded-full bg-blue-400/60"
+        style={{ animation: "float 3s ease-in-out infinite 1s" }}
+      />
+      
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0) scale(1);
+            opacity: 0.6;
+          }
+          50% {
+            transform: translateY(-4px) scale(1.2);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </button>
   );
 }
