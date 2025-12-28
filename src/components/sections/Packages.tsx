@@ -1,7 +1,8 @@
 import { Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
+import { CollectibleOrb } from "@/components/CollectibleOrb";
 
 const packages = [
   {
@@ -67,7 +68,10 @@ export function Packages() {
   };
 
   return (
-    <section id="packages" className="py-24 md:py-32">
+    <section id="packages" className="py-24 md:py-32 relative">
+      {/* Hidden collectible orb */}
+      <CollectibleOrb id="packages" className="top-32 right-[20%] hidden md:block" />
+      
       <div className="container mx-auto px-6">
         <div
           ref={headerRef}
@@ -117,12 +121,12 @@ export function Packages() {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  className="w-full mt-6 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10"
+                <SpinningGradientButton
+                  className="w-full mt-6"
                   onClick={scrollToContact}
                 >
                   Get Started
-                </Button>
+                </SpinningGradientButton>
               </CardContent>
             </Card>
           ))}

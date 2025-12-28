@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { CollectibleOrb } from "@/components/CollectibleOrb";
 
 const services = [
   {
@@ -108,7 +109,10 @@ export function Services() {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-surface">
+    <section id="services" className="py-24 md:py-32 bg-surface relative">
+      {/* Hidden collectible orb */}
+      <CollectibleOrb id="services" className="top-24 left-[12%] hidden md:block" />
+      
       <div className="container mx-auto px-6">
         <div
           ref={headerRef}
