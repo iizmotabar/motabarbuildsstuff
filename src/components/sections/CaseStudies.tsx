@@ -3,37 +3,37 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const caseStudies = [
   {
-    title: "E-Commerce Analytics Overhaul",
-    client: "Fashion Retail Brand",
-    description: "Complete tracking infrastructure rebuild with enhanced e-commerce tracking, custom dimensions, and marketing attribution.",
+    title: "Fixing Broken Tracking & Unlocking Lead Growth",
+    client: "Premium Photography Studio",
+    description: "Audited entire tracking setup, repaired GA4 conversion capture, synced campaign IDs across platforms, and established clean attribution rules inside HubSpot — backed by a centralized BigQuery data warehouse.",
     metrics: [
-      { label: "Revenue Attribution", value: "+340%", icon: TrendingUp },
-      { label: "Data Accuracy", value: "99.2%", icon: Target },
-      { label: "ROAS Improvement", value: "+85%", icon: BarChart3 },
+      { label: "Decision Time", value: "-80%", icon: TrendingUp },
+      { label: "Attribution", value: "Unified", icon: Target },
+      { label: "Report Cadence", value: "Weekly", icon: BarChart3 },
     ],
-    tags: ["GA4", "GTM", "Server-Side", "E-commerce"],
+    tags: ["GA4", "Meta Ads", "HubSpot", "BigQuery"],
   },
   {
-    title: "SaaS Conversion Tracking",
-    client: "B2B Software Company",
-    description: "Implemented full-funnel tracking from first touch to subscription, enabling precise CAC calculations and LTV predictions.",
-    metrics: [
-      { label: "Lead Quality Score", value: "+127%", icon: TrendingUp },
-      { label: "Attribution Windows", value: "90-day", icon: Target },
-      { label: "CAC Reduction", value: "-35%", icon: BarChart3 },
-    ],
-    tags: ["GA4", "HubSpot", "Custom Events", "API"],
-  },
-  {
-    title: "Multi-Brand Analytics Hub",
-    client: "Media & Publishing Group",
-    description: "Unified analytics across 5 brands with cross-domain tracking, centralized reporting, and custom dashboards.",
+    title: "Single Source of Truth for Marketing Data",
+    client: "Growth-Focused B2B Company",
+    description: "Centralized all marketing and CRM data inside BigQuery, created standardized models, and built repeatable logic for channel attribution and lead quality tracking with Looker dashboards.",
     metrics: [
       { label: "Reporting Time", value: "-80%", icon: TrendingUp },
-      { label: "Data Sources", value: "12+", icon: Target },
-      { label: "Insights Speed", value: "Real-time", icon: BarChart3 },
+      { label: "Data Sources", value: "5+", icon: Target },
+      { label: "Team Alignment", value: "Weekly", icon: BarChart3 },
     ],
-    tags: ["BigQuery", "Looker Studio", "Cross-Domain", "ETL"],
+    tags: ["BigQuery", "dbt", "Looker Studio", "ETL"],
+  },
+  {
+    title: "SEO Keywords to Measurable Revenue",
+    client: "SaaS Product",
+    description: "Connected Google Search Console and GA4 data inside their warehouse, mapped session stitching to user interactions, and modeled conversions back to Search Console queries.",
+    metrics: [
+      { label: "Trial Signups", value: "+25%", icon: TrendingUp },
+      { label: "Keyword Mapping", value: "Complete", icon: Target },
+      { label: "Content Strategy", value: "Data-Led", icon: BarChart3 },
+    ],
+    tags: ["GA4", "Search Console", "BigQuery", "SEO"],
   },
 ];
 

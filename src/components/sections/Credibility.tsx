@@ -66,10 +66,10 @@ export function Credibility() {
       <div className="container mx-auto px-6">
         {/* Animated Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-border/50">
-          <AnimatedStat end={50} suffix="+" label="Projects Delivered" />
-          <AnimatedStat end={98} suffix="%" label="Client Satisfaction" />
+          <AnimatedStat end={20} suffix="+" label="Projects Delivered" />
+          <AnimatedStat end={100} suffix="%" label="Client Satisfaction" />
           <AnimatedStat end={5} suffix="M+" label="Events Tracked Daily" />
-          <AnimatedStat end={12} suffix="+" label="Years Experience" />
+          <AnimatedStat end={5} suffix="+" label="Years Experience" />
         </div>
 
         {/* Credibility Items */}
