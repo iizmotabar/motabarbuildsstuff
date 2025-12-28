@@ -82,12 +82,8 @@ export function TechStack() {
               className="glass-strong p-6 rounded-2xl glow-border group hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl glass-card flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <category.icon className="w-5 h-5" style={{ 
-                    background: "linear-gradient(135deg, hsl(217, 91%, 60%), hsl(271, 81%, 56%))",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent"
-                  }} />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <category.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="font-semibold">{category.title}</h3>
               </div>
