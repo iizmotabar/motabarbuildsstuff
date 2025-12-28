@@ -40,13 +40,13 @@ jobs:
           </IfModule>
           EOF
 
-      - name: Deploy to Hostinger via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 65002
-          local_path: './dist/*'
-          remote_path: '/domains/motabarbuildstuff.com/public_html/'
-          sftp_only: true
+          source: "dist/*"
+          target: "/domains/motabarbuildstuff.com/public_html"
+          strip_components: 1
