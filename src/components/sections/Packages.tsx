@@ -68,7 +68,7 @@ export function Packages() {
   };
 
   return (
-    <section id="packages" className="py-16 md:py-20 relative">
+    <section id="packages" data-track="section-packages" className="py-16 md:py-20 relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="packages" className="top-32 right-[20%] hidden md:block" />
       
@@ -124,6 +124,7 @@ export function Packages() {
                 <SpinningGradientButton
                   className="w-full mt-6"
                   onClick={scrollToContact}
+                  data-track={`packages-cta-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   Get Started
                 </SpinningGradientButton>

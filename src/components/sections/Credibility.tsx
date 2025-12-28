@@ -62,7 +62,7 @@ export function Credibility() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-16 border-y border-border bg-surface/50">
+    <section id="credibility" data-track="section-credibility" className="py-16 border-y border-border bg-surface/50">
       <div className="container mx-auto px-6">
         {/* Animated Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-border/50">

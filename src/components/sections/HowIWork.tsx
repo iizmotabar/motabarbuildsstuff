@@ -40,7 +40,7 @@ export function HowIWork() {
   const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
 
   return (
-    <section id="how-i-work" className="py-16 md:py-20 bg-surface">
+    <section id="how-i-work" data-track="section-how-i-work" className="py-16 md:py-20 bg-surface">
       <div className="container mx-auto px-6">
         <div
           ref={headerRef}

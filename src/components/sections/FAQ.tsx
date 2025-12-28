@@ -43,7 +43,7 @@ export function FAQ() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="faq" className="py-16 md:py-20 relative">
+    <section id="faq" data-track="section-faq" className="py-16 md:py-20 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

@@ -35,6 +35,8 @@ export function Header() {
 
   return (
     <header
+      id="main-header"
+      data-track="header"
       className={`fixed top-0 left-0 right-0 z-50 glass border-b border-[hsl(var(--glass-border))] transition-all duration-300 ${
         scrolled ? "py-0" : "py-1"
       }`}
@@ -48,6 +50,7 @@ export function Header() {
           {/* Logo */}
           <a
             href="#"
+            data-track="header-logo"
             className={`font-semibold tracking-tight transition-all duration-300 ${
               scrolled ? "text-base" : "text-lg"
             }`}
@@ -59,11 +62,12 @@ export function Header() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav data-track="header-nav-desktop" className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
+                data-track={`header-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 className={`text-muted-foreground hover:text-foreground transition-all duration-300 ${
                   scrolled ? "text-xs" : "text-sm"
                 }`}
@@ -83,6 +87,7 @@ export function Header() {
               size="icon"
               className="md:hidden h-9 w-9"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-track="header-mobile-menu-toggle"
             >
               {mobileMenuOpen ? (
                 <X className="h-5 w-5" />
@@ -95,12 +100,13 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border">
+          <nav data-track="header-nav-mobile" className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <button
                   key={item.href}
                   onClick={() => scrollToSection(item.href)}
+                  data-track={`header-nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-left py-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.label}

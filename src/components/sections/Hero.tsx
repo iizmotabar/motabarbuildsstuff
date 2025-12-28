@@ -12,7 +12,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center pt-8 md:pt-12 relative">
+    <section id="hero" data-track="section-hero" className="min-h-[90vh] flex items-center justify-center pt-8 md:pt-12 relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="hero" className="top-40 right-[15%] hidden md:block" />
       
@@ -30,7 +30,7 @@ export function Hero() {
       <div className="container mx-auto px-6 py-16 md:py-20">
         <div className="max-w-3xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 animate-fade-in glow-border">
+          <div data-track="hero-availability-badge" className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 animate-fade-in glow-border">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
             <span className="text-sm text-muted-foreground">Available for new projects</span>
           </div>
@@ -45,7 +45,7 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <SpinningGradientButton size="lg" href="#contact">
+            <SpinningGradientButton size="lg" href="#contact" data-track="hero-cta-book-consultation">
               Book a Consultation
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </SpinningGradientButton>
@@ -54,6 +54,7 @@ export function Hero() {
               size="lg"
               className="h-12 px-8 text-base glass-card hover:bg-muted/50"
               onClick={scrollToServices}
+              data-track="hero-cta-view-services"
             >
               View Services
             </Button>

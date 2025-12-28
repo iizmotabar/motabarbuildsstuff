@@ -158,7 +158,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20 bg-surface relative">
+    <section id="contact" data-track="section-contact" className="py-16 md:py-20 bg-surface relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="contact" className="top-20 left-[10%] hidden md:block" />
       
@@ -191,19 +191,20 @@ export function Contact() {
                 href="https://calendly.com/iizmotabar"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-track="contact-cta-calendly"
               >
                 <Calendar className="h-4 w-4 group-hover:rotate-12 transition-transform text-purple-400" />
                 Book on Calendly
               </SpinningGradientButton>
               <Button size="lg" variant="outline" className="h-12 px-8 hover:scale-105 transition-transform glass-card glow-border group" asChild>
-                <a href="https://www.linkedin.com/in/iizmotabar" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/iizmotabar" target="_blank" rel="noopener noreferrer" data-track="contact-cta-linkedin">
                   <Linkedin className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
                   Connect on LinkedIn
                 </a>
               </Button>
             </div>
 
-            <form onSubmit={handleSubmit} className="glass-strong p-8 space-y-6 glow-border">
+            <form onSubmit={handleSubmit} data-track="contact-form" className="glass-strong p-8 space-y-6 glow-border">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                 <Input
@@ -215,6 +216,7 @@ export function Contact() {
                     setFormData({ ...formData, name: e.target.value });
                     if (errors.name) setErrors({ ...errors, name: undefined });
                   }}
+                  data-track="contact-form-name"
                   className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.name ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
@@ -231,6 +233,7 @@ export function Contact() {
                     setFormData({ ...formData, email: e.target.value });
                     if (errors.email) setErrors({ ...errors, email: undefined });
                   }}
+                  data-track="contact-form-email"
                   className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.email ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
@@ -247,6 +250,7 @@ export function Contact() {
                     if (errors.message) setErrors({ ...errors, message: undefined });
                   }}
                   rows={5}
+                  data-track="contact-form-message"
                   className={`transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.message ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
@@ -257,6 +261,7 @@ export function Contact() {
                 size="lg"
                 disabled={isSubmitting}
                 className="w-full"
+                data-track="contact-form-submit"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </SpinningGradientButton>
@@ -268,6 +273,7 @@ export function Contact() {
               </p>
               <a
                 href="mailto:motabar.javaid@gmail.com"
+                data-track="contact-email-link"
                 className="inline-flex items-center gap-2 mt-2 text-foreground hover:text-gradient transition-colors group"
               >
                 <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />

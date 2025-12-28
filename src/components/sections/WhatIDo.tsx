@@ -13,7 +13,7 @@ export function WhatIDo() {
   const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
 
   return (
-    <section id="what-i-do" className="py-16 md:py-20">
+    <section id="what-i-do" data-track="section-what-i-do" className="py-16 md:py-20">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <div
