@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
 import { CollectibleOrb } from "@/components/CollectibleOrb";
+import { supabase } from "@/integrations/supabase/client";
 
 export function Contact() {
   const { toast } = useToast();
@@ -25,16 +26,29 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with actual email sending later)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { error } = await supabase.functions.invoke("submit-contact", {
+        body: formData,
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+      if (error) throw error;
 
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
+
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or email me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
