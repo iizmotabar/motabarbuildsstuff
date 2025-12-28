@@ -1,5 +1,6 @@
 import { Shield, Award, Clock, Users, Zap, TrendingUp } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useCountAnimation } from "@/hooks/use-count-animation";
 
 const credibilityItems = [
   {
@@ -34,12 +35,44 @@ const credibilityItems = [
   },
 ];
 
+function AnimatedStat({
+  end,
+  suffix = "",
+  prefix = "",
+  label,
+}: {
+  end: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+}) {
+  const { ref, displayValue } = useCountAnimation({ end, suffix, prefix });
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="text-3xl md:text-4xl font-bold text-gradient mb-1">
+        {displayValue}
+      </div>
+      <p className="text-sm text-muted-foreground">{label}</p>
+    </div>
+  );
+}
+
 export function Credibility() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
     <section className="py-16 border-y border-border bg-surface/50">
       <div className="container mx-auto px-6">
+        {/* Animated Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-border/50">
+          <AnimatedStat end={50} suffix="+" label="Projects Delivered" />
+          <AnimatedStat end={98} suffix="%" label="Client Satisfaction" />
+          <AnimatedStat end={5} suffix="M+" label="Events Tracked Daily" />
+          <AnimatedStat end={12} suffix="+" label="Years Experience" />
+        </div>
+
+        {/* Credibility Items */}
         <div
           ref={ref}
           className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 stagger-children ${isVisible ? "visible" : ""}`}
