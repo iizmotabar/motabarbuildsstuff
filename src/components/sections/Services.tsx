@@ -132,12 +132,8 @@ export function Services() {
               className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
             >
               <CardHeader>
-                <div className="h-12 w-12 rounded-xl glass-card flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="h-6 w-6 text-gradient" style={{ 
-                    background: "linear-gradient(135deg, hsl(217, 91%, 60%), hsl(271, 81%, 56%))",
-                    WebkitBackgroundClip: "text",
-                    color: "transparent"
-                  }} />
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="h-6 w-6 text-blue-400" />
                 </div>
                 <CardTitle className="text-lg font-semibold">
                   {service.title}
