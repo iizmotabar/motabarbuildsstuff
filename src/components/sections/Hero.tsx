@@ -18,7 +18,7 @@ export function Hero() {
           </h1>
           
           <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            I help businesses understand what's working in their marketing, fix tracking issues, and scale with accurate data.
+            Cloud & Analytics Engineer helping businesses understand what's working in their marketing, fix tracking issues, and scale with accurate data.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
