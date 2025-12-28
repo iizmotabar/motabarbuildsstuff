@@ -63,13 +63,16 @@ export function Hero() {
           {/* Code snippet decoration */}
           <div className="mt-16 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <div className="inline-block code-block text-left glow-border">
-              <code className="text-muted-foreground">
-                <span className="text-blue-500">const</span>{" "}
-                <span className="text-purple-500">analytics</span> = {"{"}
-                <span className="text-green-500"> tracking</span>: <span className="text-orange-500">"fixed"</span>,
-                <span className="text-green-500"> data</span>: <span className="text-orange-500">"unified"</span>,
-                <span className="text-green-500"> decisions</span>: <span className="text-orange-500">"confident"</span> {"}"};
-              </code>
+              <pre className="text-sm md:text-base">
+                <code className="text-muted-foreground">
+                  <span className="text-blue-500">const</span>{" "}
+                  <span className="text-purple-500">analytics</span> = {"{"}{"\n"}
+                  {"  "}<span className="text-green-500">tracking</span>: <span className="text-orange-500">"fixed"</span>,{"\n"}
+                  {"  "}<span className="text-green-500">data</span>: <span className="text-orange-500">"unified"</span>,{"\n"}
+                  {"  "}<span className="text-green-500">decisions</span>: <span className="text-orange-500">"confident"</span>{"\n"}
+                  {"}"};
+                </code>
+              </pre>
             </div>
           </div>
 
