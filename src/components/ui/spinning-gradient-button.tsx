@@ -45,29 +45,27 @@ export function SpinningGradientButton({
 
   const gradientWrapper = (
     <>
-      {/* Sliding gradient border */}
+      {/* Subtle sliding gradient border */}
       <span className="absolute inset-0 rounded-lg overflow-hidden">
         <span 
-          className="absolute inset-0 opacity-60 group-hover:opacity-100 transition-opacity"
+          className="absolute inset-0 opacity-40 group-hover:opacity-70 transition-opacity duration-500"
           style={{
-            background: "linear-gradient(90deg, transparent 0%, #3b82f6 20%, #8b5cf6 50%, #ec4899 80%, transparent 100%)",
-            backgroundSize: "200% 100%",
-            animation: "slideGradient 3s linear infinite",
+            background: "linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.5) 50%, transparent 100%)",
+            backgroundSize: "300% 100%",
+            animation: "slideGradient 6s ease-in-out infinite",
           }}
         />
       </span>
       {/* Inner background */}
-      <span className="absolute inset-[1.5px] rounded-[7px] bg-background/95 dark:bg-background/90 backdrop-blur-xl" />
-      {/* Subtle glow on hover */}
-      <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10" />
+      <span className="absolute inset-[1px] rounded-[7px] bg-background/95 dark:bg-background/90 backdrop-blur-xl" />
       {content}
       
       <style>{`
         @keyframes slideGradient {
-          0% {
+          0%, 100% {
             background-position: 200% 0;
           }
-          100% {
+          50% {
             background-position: -200% 0;
           }
         }
