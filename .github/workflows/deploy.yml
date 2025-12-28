@@ -48,5 +48,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 65002
           source: "dist/*"
-          target: "/domains/motabarbuildstuff.com/public_html"
+          target: "~/domains/motabarbuildstuff.com/public_html"
           strip_components: 1
+          overwrite: true
