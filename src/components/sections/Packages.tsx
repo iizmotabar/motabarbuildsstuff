@@ -118,7 +118,7 @@ export function Packages() {
                   ))}
                 </ul>
                 <Button
-                  className="w-full mt-6 bg-gradient-to-r from-blue-600/70 to-purple-600/70 hover:from-blue-600/90 hover:to-purple-600/90 text-white border border-white/10 backdrop-blur-sm"
+                  className="w-full mt-6 bg-white/10 dark:bg-white/5 backdrop-blur-md border border-purple-500/30 hover:border-purple-500/50 hover:bg-white/20 dark:hover:bg-white/10 text-foreground shadow-lg shadow-purple-500/10"
                   onClick={scrollToContact}
                 >
                   Get Started
