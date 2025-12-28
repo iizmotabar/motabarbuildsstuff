@@ -5,7 +5,9 @@ import {
   Search, 
   Globe, 
   FileSearch, 
-  Zap 
+  Zap,
+  Cloud,
+  Database
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -88,6 +90,17 @@ const services = [
     ],
     outcome: "Reduced manual work, enriched leads, and scalable operations.",
   },
+  {
+    icon: Cloud,
+    title: "Cloud Infrastructure & Data Pipelines",
+    problem: "Data is scattered across systems with no reliable way to consolidate it.",
+    solutions: [
+      "Build scalable cloud data infrastructure",
+      "ETL pipelines that keep data fresh and accurate",
+      "Data warehousing with BigQuery, Snowflake, or Redshift",
+    ],
+    outcome: "A single source of truth for all your business data.",
+  },
 ];
 
 export function Services() {
@@ -111,16 +124,20 @@ export function Services() {
 
         <div
           ref={gridRef}
-          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 stagger-children ${gridVisible ? "visible" : ""}`}
         >
           {services.map((service, index) => (
             <Card
               key={index}
-              className="glass-card hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
             >
               <CardHeader>
-                <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="h-5 w-5" />
+                <div className="h-12 w-12 rounded-xl glass-card flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="h-6 w-6 text-gradient" style={{ 
+                    background: "linear-gradient(135deg, hsl(217, 91%, 60%), hsl(271, 81%, 56%))",
+                    WebkitBackgroundClip: "text",
+                    color: "transparent"
+                  }} />
                 </div>
                 <CardTitle className="text-lg font-semibold">
                   {service.title}
@@ -133,12 +150,12 @@ export function Services() {
                 <ul className="space-y-2">
                   {service.solutions.map((solution, i) => (
                     <li key={i} className="text-sm flex items-start gap-2">
-                      <span className="text-muted-foreground">·</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-1.5 flex-shrink-0" />
                       <span>{solution}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="pt-4 border-t border-border">
+                <div className="pt-4 border-t border-border/50">
                   <p className="text-sm font-medium">{service.outcome}</p>
                 </div>
               </CardContent>

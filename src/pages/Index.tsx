@@ -9,23 +9,34 @@ import { HowIWork } from "@/components/sections/HowIWork";
 import { WhyThisMatters } from "@/components/sections/WhyThisMatters";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
+import { FloatingElements } from "@/components/FloatingElements";
+import { GradientOrbs } from "@/components/GradientOrbs";
+import { GridPattern } from "@/components/GridPattern";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <Credibility />
-        <WhatIDo />
-        <Services />
-        <Packages />
-        <HowIWork />
-        <WhyThisMatters />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background effects */}
+      <GridPattern />
+      <GradientOrbs />
+      <FloatingElements />
+      
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
+        <main>
+          <Hero />
+          <Credibility />
+          <WhatIDo />
+          <Services />
+          <Packages />
+          <HowIWork />
+          <WhyThisMatters />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
