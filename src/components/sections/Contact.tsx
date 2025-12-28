@@ -10,13 +10,38 @@ import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button
 import { CollectibleOrb } from "@/components/CollectibleOrb";
 import { supabase } from "@/integrations/supabase/client";
 
-// Helper to get UTM params from URL
-const getUtmParams = () => {
+// Helper to get cookie value
+const getCookie = (name: string): string => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || "";
+  return "";
+};
+
+// Helper to extract GA client ID from _ga cookie
+const getGAClientId = (): string => {
+  const gaCookie = getCookie("_ga");
+  if (gaCookie) {
+    // _ga cookie format: GA1.2.XXXXXXXXXX.XXXXXXXXXX
+    const parts = gaCookie.split(".");
+    if (parts.length >= 4) {
+      return `${parts[2]}.${parts[3]}`;
+    }
+  }
+  return "";
+};
+
+// Helper to get tracking params from URL and cookies
+const getTrackingParams = () => {
   const params = new URLSearchParams(window.location.search);
   return {
-    utm_source: params.get("utm_source") || "",
-    utm_medium: params.get("utm_medium") || "",
-    utm_campaign: params.get("utm_campaign") || "",
+    utm_source: params.get("utm_source") || getCookie("utm_source") || "",
+    utm_medium: params.get("utm_medium") || getCookie("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || getCookie("utm_campaign") || "",
+    gclid: params.get("gclid") || getCookie("gclid") || "",
+    fbclid: params.get("fbclid") || getCookie("fbclid") || "",
+    msclkid: params.get("msclkid") || getCookie("msclkid") || "",
+    client_id: getGAClientId(),
   };
 };
 
@@ -28,14 +53,18 @@ export function Contact() {
     email: "",
     message: "",
   });
-  const [utmData, setUtmData] = useState({
+  const [trackingData, setTrackingData] = useState({
     utm_source: "",
     utm_medium: "",
     utm_campaign: "",
+    gclid: "",
+    fbclid: "",
+    msclkid: "",
+    client_id: "",
   });
 
   useEffect(() => {
-    setUtmData(getUtmParams());
+    setTrackingData(getTrackingParams());
   }, []);
 
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -47,7 +76,7 @@ export function Contact() {
 
     try {
       const { error } = await supabase.functions.invoke("submit-contact", {
-        body: { ...formData, ...utmData },
+        body: { ...formData, ...trackingData },
       });
 
       if (error) throw error;
