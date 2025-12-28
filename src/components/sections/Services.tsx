@@ -109,7 +109,7 @@ export function Services() {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-surface relative">
+    <section id="services" className="py-16 md:py-20 bg-surface relative">
       {/* Hidden collectible orb */}
       <CollectibleOrb id="services" className="top-24 left-[12%] hidden md:block" />
       

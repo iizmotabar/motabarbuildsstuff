@@ -27,7 +27,7 @@ export function Hero() {
         <Cloud className="w-12 h-12 text-cyan-500" />
       </div>
       
-      <div className="container mx-auto px-6 py-24 md:py-32">
+      <div className="container mx-auto px-6 py-16 md:py-20">
         <div className="max-w-3xl mx-auto text-center">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 animate-fade-in glow-border">
