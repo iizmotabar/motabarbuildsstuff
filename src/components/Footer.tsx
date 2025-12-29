@@ -31,11 +31,12 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Quick Links</h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-2" data-track="footer-quick-links">
               {["Services", "Tech Stack", "Packages", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
+                  data-track={`footer-link-${item.toLowerCase().replace(" ", "-")}`}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group w-fit"
                 >
                   {item}

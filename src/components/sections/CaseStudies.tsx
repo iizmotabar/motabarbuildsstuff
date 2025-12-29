@@ -301,6 +301,7 @@ export function CaseStudies() {
             <div
               key={index}
               onClick={() => setSelectedStudy(study)}
+              data-track={`case-study-card-${index + 1}`}
               className="group glass rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300 border border-[hsl(var(--glass-border))] cursor-pointer"
             >
               <div className="flex items-start justify-between mb-4">

@@ -48,6 +48,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
+              data-track={`testimonial-card-${index + 1}`}
               className="glass-card p-8 relative hover:scale-[1.02] transition-transform"
             >
               <Quote className="h-8 w-8 text-primary/30 absolute top-6 right-6" />

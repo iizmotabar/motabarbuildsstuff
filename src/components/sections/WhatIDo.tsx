@@ -38,6 +38,7 @@ export function WhatIDo() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
+                data-track={`what-i-do-benefit-${index + 1}`}
                 className="flex items-start gap-4 p-4 rounded-lg glass-subtle group hover:scale-[1.02] transition-transform duration-300"
               >
                 <CheckCircle className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />

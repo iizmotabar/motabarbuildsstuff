@@ -58,14 +58,15 @@ export function FAQ() {
           ref={ref}
           className={`max-w-3xl mx-auto ${isVisible ? "animate-fade-in" : "opacity-0"}`}
         >
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-4" data-track="faq-accordion">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
+                data-track={`faq-item-${index + 1}`}
                 className="glass rounded-xl border border-[hsl(var(--glass-border))] px-6 data-[state=open]:bg-surface/50"
               >
-                <AccordionTrigger className="text-left hover:no-underline py-5">
+                <AccordionTrigger className="text-left hover:no-underline py-5" data-track={`faq-trigger-${index + 1}`}>
                   <span className="font-medium">{faq.question}</span>
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground pb-5">

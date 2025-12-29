@@ -133,6 +133,7 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
+              data-track={`service-card-${service.title.toLowerCase().replace(/\s+/g, '-').slice(0, 30)}`}
               className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
             >
               <CardHeader>
