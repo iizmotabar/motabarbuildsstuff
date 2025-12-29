@@ -79,6 +79,7 @@ export function TechStack() {
           {techCategories.map((category, index) => (
             <div
               key={index}
+              data-track={`tech-category-${category.title.toLowerCase().replace(/\s+/g, '-')}`}
               className="glass-strong p-6 rounded-2xl glow-border group hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">

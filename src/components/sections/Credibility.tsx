@@ -78,7 +78,7 @@ export function Credibility() {
           className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 stagger-children ${isVisible ? "visible" : ""}`}
         >
           {credibilityItems.map((item, index) => (
-            <div key={index} className="text-center group">
+            <div key={index} data-track={`credibility-${item.label.toLowerCase().replace(/\s+/g, '-')}`} className="text-center group">
               <div className="h-12 w-12 mx-auto rounded-xl glass-subtle flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                 <item.icon className="h-5 w-5" />
               </div>

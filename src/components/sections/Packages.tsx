@@ -92,6 +92,7 @@ export function Packages() {
           {packages.map((pkg, index) => (
             <Card
               key={index}
+              data-track={`package-card-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
               className={`relative border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:-translate-y-1 ${
                 pkg.featured ? "border-purple-500/30" : ""
               }`}

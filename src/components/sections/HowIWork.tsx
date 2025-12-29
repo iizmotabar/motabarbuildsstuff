@@ -62,6 +62,7 @@ export function HowIWork() {
             {workStyle.map((item, index) => (
               <div
                 key={index}
+                data-track={`how-i-work-${item.title.toLowerCase().replace(/\s+/g, '-').slice(0, 25)}`}
                 className="flex items-start gap-4 p-6 glass-card group hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="h-10 w-10 rounded-lg glass-subtle flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
