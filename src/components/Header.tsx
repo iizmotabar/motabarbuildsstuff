@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { trackNavClick, trackButtonClick } from "@/lib/gtm";
 
 const navItems = [
   { label: "What I Do", href: "#what-i-do" },
@@ -25,8 +26,9 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
+  const scrollToSection = (href: string, label: string, isMobile: boolean = false) => {
     setMobileMenuOpen(false);
+    trackNavClick(label, isMobile ? 'mobile' : 'desktop');
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -66,7 +68,7 @@ export function Header() {
             {navItems.map((item) => (
               <button
                 key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => scrollToSection(item.href, item.label, false)}
                 data-track={`header-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                 className={`text-muted-foreground hover:text-foreground transition-all duration-300 ${
                   scrolled ? "text-xs" : "text-sm"
@@ -86,7 +88,10 @@ export function Header() {
               variant="ghost"
               size="icon"
               className="md:hidden h-9 w-9"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => {
+                trackButtonClick('mobile-menu-toggle', mobileMenuOpen ? 'Close Menu' : 'Open Menu', 'header');
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
               data-track="header-mobile-menu-toggle"
             >
               {mobileMenuOpen ? (
@@ -105,7 +110,7 @@ export function Header() {
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => scrollToSection(item.href, item.label, true)}
                   data-track={`header-nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                   className="text-left py-2 text-muted-foreground hover:text-foreground transition-colors"
                 >

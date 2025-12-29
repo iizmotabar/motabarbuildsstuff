@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
 import { CollectibleOrb } from "@/components/CollectibleOrb";
+import { trackPackageInteraction } from "@/lib/gtm";
 
 const packages = [
   {
@@ -60,7 +61,8 @@ export function Packages() {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
 
-  const scrollToContact = () => {
+  const scrollToContact = (packageName: string, packagePrice: string) => {
+    trackPackageInteraction('click', packageName, packagePrice);
     const element = document.querySelector("#contact");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -124,7 +126,7 @@ export function Packages() {
                 </ul>
                 <SpinningGradientButton
                   className="w-full mt-6"
-                  onClick={scrollToContact}
+                  onClick={() => scrollToContact(pkg.name, pkg.price)}
                   data-track={`packages-cta-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
                 >
                   Get Started

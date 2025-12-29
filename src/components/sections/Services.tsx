@@ -12,6 +12,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { CollectibleOrb } from "@/components/CollectibleOrb";
+import { trackServiceInteraction } from "@/lib/gtm";
 
 const services = [
   {
@@ -134,7 +135,8 @@ export function Services() {
             <Card
               key={index}
               data-track={`service-card-${service.title.toLowerCase().replace(/\s+/g, '-').slice(0, 30)}`}
-              className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
+              onClick={() => trackServiceInteraction('click', service.title)}
+              className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group cursor-pointer"
             >
               <CardHeader>
                 <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
