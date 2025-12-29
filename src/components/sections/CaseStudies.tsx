@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { trackCaseStudyInteraction, trackButtonClick } from "@/lib/gtm";
 
 const caseStudies = [
   {
@@ -300,7 +301,10 @@ export function CaseStudies() {
           {displayedStudies.map((study, index) => (
             <div
               key={index}
-              onClick={() => setSelectedStudy(study)}
+              onClick={() => {
+                trackCaseStudyInteraction('click', study.title, study.client);
+                setSelectedStudy(study);
+              }}
               data-track={`case-study-card-${index + 1}`}
               className="group glass rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300 border border-[hsl(var(--glass-border))] cursor-pointer"
             >
@@ -357,7 +361,10 @@ export function CaseStudies() {
         <div className="flex justify-center mt-12">
           <Button
             variant="outline"
-            onClick={() => setShowAll(!showAll)}
+            onClick={() => {
+              trackButtonClick('case-studies-toggle', showAll ? 'Show Less' : 'View All Case Studies', 'case-studies');
+              setShowAll(!showAll);
+            }}
             className="glass-subtle border-[hsl(var(--glass-border))] hover:bg-primary/10"
           >
             {showAll ? (

@@ -1,10 +1,12 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Linkedin, Mail, Github, ArrowUpRight } from "lucide-react";
+import { trackLinkClick, trackButtonClick } from "@/lib/gtm";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
+    trackButtonClick('footer-back-to-top', 'Back to top', 'footer');
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -37,6 +39,7 @@ export function Footer() {
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
                   data-track={`footer-link-${item.toLowerCase().replace(" ", "-")}`}
+                  onClick={() => trackLinkClick(`#${item.toLowerCase().replace(" ", "-")}`, item, 'footer')}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group w-fit"
                 >
                   {item}
@@ -55,6 +58,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-track="footer-social-linkedin"
+                onClick={() => trackLinkClick('https://www.linkedin.com/in/iizmotabar', 'LinkedIn', 'footer')}
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-blue-500/50 hover:scale-110 transition-all"
               >
                 <Linkedin className="w-4 h-4 text-blue-400" />
@@ -62,6 +66,7 @@ export function Footer() {
               <a
                 href="mailto:motabar.javaid@gmail.com"
                 data-track="footer-social-email"
+                onClick={() => trackLinkClick('mailto:motabar.javaid@gmail.com', 'Email', 'footer')}
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-purple-500/50 hover:scale-110 transition-all"
               >
                 <Mail className="w-4 h-4 text-purple-400" />
@@ -71,6 +76,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-track="footer-social-github"
+                onClick={() => trackLinkClick('https://github.com', 'GitHub', 'footer')}
                 className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-cyan-500/50 hover:scale-110 transition-all"
               >
                 <Github className="w-4 h-4 text-cyan-400" />

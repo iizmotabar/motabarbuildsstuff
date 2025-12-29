@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -5,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { trackFAQInteraction } from "@/lib/gtm";
 
 const faqs = [
   {
@@ -41,6 +43,20 @@ const faqs = [
 
 export function FAQ() {
   const { ref, isVisible } = useScrollAnimation();
+  const [openItem, setOpenItem] = useState<string | undefined>(undefined);
+
+  const handleAccordionChange = (value: string) => {
+    const index = parseInt(value.replace('item-', ''));
+    const faq = faqs[index];
+    
+    if (value === openItem) {
+      trackFAQInteraction('collapse', faq.question);
+      setOpenItem(undefined);
+    } else {
+      trackFAQInteraction('expand', faq.question);
+      setOpenItem(value);
+    }
+  };
 
   return (
     <section id="faq" data-track="section-faq" className="py-16 md:py-20 relative">
@@ -58,7 +74,14 @@ export function FAQ() {
           ref={ref}
           className={`max-w-3xl mx-auto ${isVisible ? "animate-fade-in" : "opacity-0"}`}
         >
-          <Accordion type="single" collapsible className="space-y-4" data-track="faq-accordion">
+          <Accordion 
+            type="single" 
+            collapsible 
+            className="space-y-4" 
+            data-track="faq-accordion"
+            value={openItem}
+            onValueChange={handleAccordionChange}
+          >
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}

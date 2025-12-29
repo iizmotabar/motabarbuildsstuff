@@ -2,6 +2,7 @@ import { ArrowRight, ChevronDown, Terminal, Database, Cloud } from "lucide-react
 import { Button } from "@/components/ui/button";
 import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button";
 import { CollectibleOrb } from "@/components/CollectibleOrb";
+import { trackCTAClick, trackButtonClick } from "@/lib/gtm";
 
 export function Hero() {
   const scrollToServices = () => {
@@ -45,7 +46,12 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <SpinningGradientButton size="lg" href="#contact" data-track="hero-cta-book-consultation">
+            <SpinningGradientButton 
+              size="lg" 
+              href="#contact" 
+              data-track="hero-cta-book-consultation"
+              onClick={() => trackCTAClick('hero-cta-book-consultation', 'Book a Consultation', '#contact')}
+            >
               Book a Consultation
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </SpinningGradientButton>
@@ -53,7 +59,10 @@ export function Hero() {
               variant="outline"
               size="lg"
               className="h-12 px-8 text-base glass-card hover:bg-muted/50"
-              onClick={scrollToServices}
+              onClick={() => {
+                trackButtonClick('hero-cta-view-services', 'View Services', 'hero');
+                scrollToServices();
+              }}
               data-track="hero-cta-view-services"
             >
               View Services
