@@ -1,7 +1,9 @@
 {
   "exportFormatVersion": 2,
-  "exportTime": "2024-01-01 00:00:00",
+  "exportTime": "2025-01-01 00:00:00",
   "containerVersion": {
+    "accountId": "6261244625",
+    "containerId": "201920451",
     "tag": [
       {
         "accountId": "6261244625",
@@ -11,7 +13,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "nav_click" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "nav_item" },
@@ -34,7 +36,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "button_click" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "element_id" },
@@ -61,7 +63,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "cta_click" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "element_id" },
@@ -88,7 +90,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "link_click" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "link_url" },
@@ -115,7 +117,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "case_study_interaction" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "case_study_title" },
@@ -142,7 +144,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "package_interaction" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "package_name" },
@@ -169,7 +171,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "service_interaction" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "service_name" },
@@ -192,7 +194,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "faq_interaction" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "faq_question" },
@@ -215,7 +217,7 @@
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "form_interaction" },
-          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "form_name" },
