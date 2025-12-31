@@ -4,13 +4,14 @@
   "containerVersion": {
     "tag": [
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "1",
         "name": "GA4 - Navigation Click",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "nav_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "nav_item" },
@@ -26,13 +27,14 @@
         "firingTriggerId": ["1"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "2",
         "name": "GA4 - Button Click",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "button_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "element_id" },
@@ -52,13 +54,14 @@
         "firingTriggerId": ["2"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "3",
         "name": "GA4 - CTA Click",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "cta_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "element_id" },
@@ -78,13 +81,14 @@
         "firingTriggerId": ["3"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "4",
         "name": "GA4 - Link Click",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "link_click" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "link_url" },
@@ -104,13 +108,14 @@
         "firingTriggerId": ["4"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "5",
         "name": "GA4 - Case Study Interaction",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "case_study_interaction" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "case_study_title" },
@@ -130,13 +135,14 @@
         "firingTriggerId": ["5"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "6",
         "name": "GA4 - Package Interaction",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "package_interaction" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "package_name" },
@@ -156,13 +162,14 @@
         "firingTriggerId": ["6"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "7",
         "name": "GA4 - Service Interaction",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "service_interaction" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "service_name" },
@@ -178,13 +185,14 @@
         "firingTriggerId": ["7"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "8",
         "name": "GA4 - FAQ Interaction",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "faq_interaction" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "faq_question" },
@@ -200,13 +208,14 @@
         "firingTriggerId": ["8"]
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "tagId": "9",
         "name": "GA4 - Form Interaction",
         "type": "gaawe",
         "parameter": [
           { "type": "TEMPLATE", "key": "eventName", "value": "form_interaction" },
+          { "type": "TAG_REFERENCE", "key": "measurementId", "value": "{{GA4 Stream ID}}" },
           { "type": "LIST", "key": "eventParameters", "list": [
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "form_name" },
@@ -228,8 +237,8 @@
     ],
     "trigger": [
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "1",
         "name": "CE - nav_click",
         "type": "CUSTOM_EVENT",
@@ -242,8 +251,8 @@
         "fingerprint": "1"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "2",
         "name": "CE - button_click",
         "type": "CUSTOM_EVENT",
@@ -256,8 +265,8 @@
         "fingerprint": "2"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "3",
         "name": "CE - cta_click",
         "type": "CUSTOM_EVENT",
@@ -270,8 +279,8 @@
         "fingerprint": "3"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "4",
         "name": "CE - link_click",
         "type": "CUSTOM_EVENT",
@@ -284,8 +293,8 @@
         "fingerprint": "4"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "5",
         "name": "CE - case_study_interaction",
         "type": "CUSTOM_EVENT",
@@ -298,8 +307,8 @@
         "fingerprint": "5"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "6",
         "name": "CE - package_interaction",
         "type": "CUSTOM_EVENT",
@@ -312,8 +321,8 @@
         "fingerprint": "6"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "7",
         "name": "CE - service_interaction",
         "type": "CUSTOM_EVENT",
@@ -326,8 +335,8 @@
         "fingerprint": "7"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "8",
         "name": "CE - faq_interaction",
         "type": "CUSTOM_EVENT",
@@ -340,8 +349,8 @@
         "fingerprint": "8"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "triggerId": "9",
         "name": "CE - form_interaction",
         "type": "CUSTOM_EVENT",
@@ -356,8 +365,8 @@
     ],
     "variable": [
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "1",
         "name": "DLV - nav_item",
         "type": "v",
@@ -369,8 +378,8 @@
         "fingerprint": "1"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "2",
         "name": "DLV - nav_type",
         "type": "v",
@@ -382,8 +391,8 @@
         "fingerprint": "2"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "3",
         "name": "DLV - element_id",
         "type": "v",
@@ -395,8 +404,8 @@
         "fingerprint": "3"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "4",
         "name": "DLV - element_text",
         "type": "v",
@@ -408,8 +417,8 @@
         "fingerprint": "4"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "5",
         "name": "DLV - section",
         "type": "v",
@@ -421,8 +430,8 @@
         "fingerprint": "5"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "6",
         "name": "DLV - link_url",
         "type": "v",
@@ -434,8 +443,8 @@
         "fingerprint": "6"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "7",
         "name": "DLV - link_text",
         "type": "v",
@@ -447,8 +456,8 @@
         "fingerprint": "7"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "8",
         "name": "DLV - case_study_title",
         "type": "v",
@@ -460,8 +469,8 @@
         "fingerprint": "8"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "9",
         "name": "DLV - case_study_category",
         "type": "v",
@@ -473,8 +482,8 @@
         "fingerprint": "9"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "10",
         "name": "DLV - package_name",
         "type": "v",
@@ -486,8 +495,8 @@
         "fingerprint": "10"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "11",
         "name": "DLV - package_price",
         "type": "v",
@@ -499,8 +508,8 @@
         "fingerprint": "11"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "12",
         "name": "DLV - service_name",
         "type": "v",
@@ -512,8 +521,8 @@
         "fingerprint": "12"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "13",
         "name": "DLV - faq_question",
         "type": "v",
@@ -525,8 +534,8 @@
         "fingerprint": "13"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "14",
         "name": "DLV - form_name",
         "type": "v",
@@ -538,8 +547,8 @@
         "fingerprint": "14"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "15",
         "name": "DLV - field_name",
         "type": "v",
@@ -551,8 +560,8 @@
         "fingerprint": "15"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "16",
         "name": "DLV - event_action",
         "type": "v",
@@ -564,8 +573,8 @@
         "fingerprint": "16"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "17",
         "name": "DLV - event_category",
         "type": "v",
@@ -577,8 +586,8 @@
         "fingerprint": "17"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "18",
         "name": "DLV - event_label",
         "type": "v",
@@ -590,8 +599,8 @@
         "fingerprint": "18"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "19",
         "name": "DLV - timestamp",
         "type": "v",
@@ -603,8 +612,8 @@
         "fingerprint": "19"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "20",
         "name": "DLV - page_path",
         "type": "v",
@@ -616,8 +625,8 @@
         "fingerprint": "20"
       },
       {
-        "accountId": "ACCOUNT_ID",
-        "containerId": "CONTAINER_ID",
+        "accountId": "6261244625",
+        "containerId": "201920451",
         "variableId": "21",
         "name": "DLV - page_title",
         "type": "v",
