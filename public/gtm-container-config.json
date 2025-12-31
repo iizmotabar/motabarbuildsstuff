@@ -4,6 +4,12 @@
   "containerVersion": {
     "accountId": "6261244625",
     "containerId": "201920451",
+    "container": {
+      "accountId": "6261244625",
+      "containerId": "201920451",
+      "name": "Website Tracking",
+      "usageContext": ["WEB"]
+    },
     "tag": [
       {
         "accountId": "6261244625",
@@ -22,6 +28,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "nav_type" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - nav_type}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -49,6 +59,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "section" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -76,6 +90,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "link_url" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - link_url}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -103,6 +121,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "section" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -130,6 +152,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "event_action" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - event_action}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -157,6 +183,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "event_action" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - event_action}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -180,6 +210,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "event_action" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - event_action}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -203,6 +237,10 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "event_action" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - event_action}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
@@ -230,11 +268,81 @@
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "event_action" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - event_action}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
             ]}
           ]}
         ],
         "fingerprint": "9",
         "firingTriggerId": ["9"]
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "tagId": "10",
+        "name": "GA4 - Scroll Depth",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "scroll_depth" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "scroll_percentage" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - scroll_percentage}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "scroll_threshold" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - scroll_threshold}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_title}}" }
+            ]}
+          ]}
+        ],
+        "fingerprint": "10",
+        "firingTriggerId": ["10"]
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "tagId": "11",
+        "name": "GA4 - Section View",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "section_view" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "section_id" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section_id}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "section_name" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section_name}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "section" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_title}}" }
+            ]}
+          ]}
+        ],
+        "fingerprint": "11",
+        "firingTriggerId": ["11"]
       }
     ],
     "trigger": [
@@ -363,6 +471,34 @@
           ]}
         ],
         "fingerprint": "9"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "triggerId": "10",
+        "name": "CE - scroll_depth",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          { "type": "EQUALS", "parameter": [
+            { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+            { "type": "TEMPLATE", "key": "arg1", "value": "scroll_depth" }
+          ]}
+        ],
+        "fingerprint": "10"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "triggerId": "11",
+        "name": "CE - section_view",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          { "type": "EQUALS", "parameter": [
+            { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+            { "type": "TEMPLATE", "key": "arg1", "value": "section_view" }
+          ]}
+        ],
+        "fingerprint": "11"
       }
     ],
     "variable": [
@@ -638,6 +774,58 @@
           { "type": "TEMPLATE", "key": "name", "value": "page_title" }
         ],
         "fingerprint": "21"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "22",
+        "name": "DLV - scroll_percentage",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "scroll_percentage" }
+        ],
+        "fingerprint": "22"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "23",
+        "name": "DLV - scroll_threshold",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "scroll_threshold" }
+        ],
+        "fingerprint": "23"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "24",
+        "name": "DLV - section_id",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "section_id" }
+        ],
+        "fingerprint": "24"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "25",
+        "name": "DLV - section_name",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "section_name" }
+        ],
+        "fingerprint": "25"
       }
     ],
     "fingerprint": "1"

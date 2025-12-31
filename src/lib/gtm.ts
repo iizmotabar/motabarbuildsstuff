@@ -164,5 +164,86 @@ export const trackSectionView = (sectionId: string, sectionName: string) => {
     event_action: 'View',
     event_label: sectionName,
     section: sectionId,
+    section_id: sectionId,
+    section_name: sectionName,
   });
+};
+
+// Scroll depth tracking
+const scrollMilestones = new Set<number>();
+
+export const trackScrollDepth = (percentage: number) => {
+  const milestone = Math.floor(percentage / 25) * 25;
+  
+  if (milestone > 0 && milestone <= 100 && !scrollMilestones.has(milestone)) {
+    scrollMilestones.add(milestone);
+    pushToDataLayer({
+      event: 'scroll_depth',
+      event_category: 'Scroll',
+      event_action: 'Milestone',
+      event_label: `${milestone}%`,
+      scroll_percentage: milestone,
+      scroll_threshold: milestone,
+    });
+  }
+};
+
+export const initScrollTracking = () => {
+  let ticking = false;
+  
+  const handleScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const percentage = (scrolled / scrollHeight) * 100;
+        trackScrollDepth(percentage);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  return () => window.removeEventListener('scroll', handleScroll);
+};
+
+// Section visibility tracking
+const viewedSections = new Set<string>();
+
+export const initSectionVisibilityTracking = () => {
+  const sections = document.querySelectorAll('section[id]');
+  
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const sectionName = entry.target.getAttribute('data-section-name') || 
+                             sectionId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          
+          if (!viewedSections.has(sectionId)) {
+            viewedSections.add(sectionId);
+            trackSectionView(sectionId, sectionName);
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+      rootMargin: '0px',
+    }
+  );
+  
+  sections.forEach((section) => observer.observe(section));
+  
+  return () => observer.disconnect();
+};
+
+export const resetScrollTracking = () => {
+  scrollMilestones.clear();
+};
+
+export const resetSectionTracking = () => {
+  viewedSections.clear();
 };
