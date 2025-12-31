@@ -343,6 +343,45 @@
         ],
         "fingerprint": "11",
         "firingTriggerId": ["11"]
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "tagId": "12",
+        "name": "GA4 - Section Engagement",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "section_engagement" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "section_id" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section_id}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "section_name" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - section_name}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "engagement_time_ms" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - engagement_time_ms}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "engagement_time_sec" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - engagement_time_sec}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_title}}" }
+            ]}
+          ]}
+        ],
+        "fingerprint": "12",
+        "firingTriggerId": ["12"]
       }
     ],
     "trigger": [
@@ -499,6 +538,20 @@
           ]}
         ],
         "fingerprint": "11"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "triggerId": "12",
+        "name": "CE - section_engagement",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          { "type": "EQUALS", "parameter": [
+            { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+            { "type": "TEMPLATE", "key": "arg1", "value": "section_engagement" }
+          ]}
+        ],
+        "fingerprint": "12"
       }
     ],
     "variable": [
@@ -826,6 +879,32 @@
           { "type": "TEMPLATE", "key": "name", "value": "section_name" }
         ],
         "fingerprint": "25"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "26",
+        "name": "DLV - engagement_time_ms",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "engagement_time_ms" }
+        ],
+        "fingerprint": "26"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "27",
+        "name": "DLV - engagement_time_sec",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "engagement_time_sec" }
+        ],
+        "fingerprint": "27"
       }
     ],
     "fingerprint": "1"

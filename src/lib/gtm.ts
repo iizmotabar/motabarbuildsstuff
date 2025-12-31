@@ -211,20 +211,71 @@ export const initScrollTracking = () => {
 // Section visibility tracking
 const viewedSections = new Set<string>();
 
+// Engagement time tracking
+const sectionEngagement = new Map<string, { startTime: number; totalTime: number; isVisible: boolean }>();
+
+export const trackSectionEngagement = (
+  sectionId: string, 
+  sectionName: string, 
+  engagementTimeMs: number
+) => {
+  const engagementTimeSec = Math.round(engagementTimeMs / 1000);
+  
+  // Only track if engagement time is meaningful (at least 1 second)
+  if (engagementTimeSec >= 1) {
+    pushToDataLayer({
+      event: 'section_engagement',
+      event_category: 'Engagement',
+      event_action: 'Time Spent',
+      event_label: sectionName,
+      section: sectionId,
+      section_id: sectionId,
+      section_name: sectionName,
+      engagement_time_ms: engagementTimeMs,
+      engagement_time_sec: engagementTimeSec,
+    });
+  }
+};
+
 export const initSectionVisibilityTracking = () => {
   const sections = document.querySelectorAll('section[id]');
   
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+        const sectionId = entry.target.id;
+        const sectionName = entry.target.getAttribute('data-section-name') || 
+                           sectionId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        
         if (entry.isIntersecting) {
-          const sectionId = entry.target.id;
-          const sectionName = entry.target.getAttribute('data-section-name') || 
-                             sectionId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-          
+          // Section became visible
           if (!viewedSections.has(sectionId)) {
             viewedSections.add(sectionId);
             trackSectionView(sectionId, sectionName);
+          }
+          
+          // Start or resume engagement tracking
+          const existing = sectionEngagement.get(sectionId);
+          if (existing) {
+            existing.startTime = Date.now();
+            existing.isVisible = true;
+          } else {
+            sectionEngagement.set(sectionId, {
+              startTime: Date.now(),
+              totalTime: 0,
+              isVisible: true,
+            });
+          }
+        } else {
+          // Section left viewport - calculate engagement time
+          const engagement = sectionEngagement.get(sectionId);
+          if (engagement && engagement.isVisible) {
+            const timeSpent = Date.now() - engagement.startTime;
+            engagement.totalTime += timeSpent;
+            engagement.isVisible = false;
+            
+            // Fire engagement event when section leaves viewport
+            trackSectionEngagement(sectionId, sectionName, engagement.totalTime);
           }
         }
       });
@@ -237,7 +288,26 @@ export const initSectionVisibilityTracking = () => {
   
   sections.forEach((section) => observer.observe(section));
   
-  return () => observer.disconnect();
+  // Track remaining engagement on page unload
+  const handleBeforeUnload = () => {
+    sectionEngagement.forEach((engagement, sectionId) => {
+      if (engagement.isVisible) {
+        const timeSpent = Date.now() - engagement.startTime;
+        engagement.totalTime += timeSpent;
+        const section = document.getElementById(sectionId);
+        const sectionName = section?.getAttribute('data-section-name') || 
+                           sectionId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        trackSectionEngagement(sectionId, sectionName, engagement.totalTime);
+      }
+    });
+  };
+  
+  window.addEventListener('beforeunload', handleBeforeUnload);
+  
+  return () => {
+    observer.disconnect();
+    window.removeEventListener('beforeunload', handleBeforeUnload);
+  };
 };
 
 export const resetScrollTracking = () => {
@@ -246,4 +316,5 @@ export const resetScrollTracking = () => {
 
 export const resetSectionTracking = () => {
   viewedSections.clear();
+  sectionEngagement.clear();
 };
