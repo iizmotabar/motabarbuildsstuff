@@ -51,44 +51,44 @@
   }
 
   .dark {
-    --background: 20 15% 6%;
-    --foreground: 30 10% 90%;
+    --background: 15 12% 4%;
+    --foreground: 35 8% 88%;
 
-    --card: 20 15% 8%;
-    --card-foreground: 30 10% 90%;
+    --card: 15 12% 6%;
+    --card-foreground: 35 8% 88%;
 
-    --popover: 20 15% 8%;
-    --popover-foreground: 30 10% 90%;
+    --popover: 15 12% 6%;
+    --popover-foreground: 35 8% 88%;
 
-    --primary: 30 10% 95%;
-    --primary-foreground: 20 15% 6%;
+    --primary: 35 8% 92%;
+    --primary-foreground: 15 12% 4%;
 
-    --secondary: 20 12% 12%;
-    --secondary-foreground: 30 10% 90%;
+    --secondary: 18 10% 10%;
+    --secondary-foreground: 35 8% 88%;
 
-    --muted: 20 12% 12%;
-    --muted-foreground: 25 10% 55%;
+    --muted: 18 10% 10%;
+    --muted-foreground: 25 8% 50%;
 
-    --accent: 20 12% 14%;
-    --accent-foreground: 30 10% 90%;
+    --accent: 18 10% 12%;
+    --accent-foreground: 35 8% 88%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 25 12% 16%;
-    --input: 25 12% 16%;
-    --ring: 30 60% 50%;
+    --border: 20 10% 14%;
+    --input: 20 10% 14%;
+    --ring: 24 85% 45%;
 
     /* Custom tokens */
-    --surface: 20 15% 7%;
-    --surface-foreground: 30 10% 90%;
-    --highlight: 25 12% 14%;
+    --surface: 15 12% 5%;
+    --surface-foreground: 35 8% 88%;
+    --highlight: 20 10% 12%;
     
-    /* Glass/Neumorphism tokens - warm tint */
-    --glass-bg: 25 20% 95% / 0.06;
-    --glass-border: 30 25% 95% / 0.12;
-    --glass-shadow: 20 30% 3% / 0.3;
-    --glass-shadow-inset: 30 20% 95% / 0.06;
+    /* Glass/Neumorphism tokens - subtle warm tint */
+    --glass-bg: 30 15% 90% / 0.04;
+    --glass-border: 30 15% 90% / 0.08;
+    --glass-shadow: 15 20% 2% / 0.4;
+    --glass-shadow-inset: 30 15% 90% / 0.04;
   }
 }
 
@@ -149,7 +149,7 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-orange-400 via-amber-500 to-yellow-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 bg-clip-text text-transparent;
   }
   
   .shimmer {
