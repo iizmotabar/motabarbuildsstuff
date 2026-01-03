@@ -135,7 +135,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, hsl(217 91% 70% / 0.25), hsl(271 81% 70% / 0.25));
+    background: linear-gradient(135deg, hsl(25 95% 55% / 0.3), hsl(35 100% 50% / 0.25));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -149,7 +149,7 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent;
   }
   
   .shimmer {

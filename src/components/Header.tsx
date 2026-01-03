@@ -57,7 +57,7 @@ export function Header() {
               scrolled ? "text-base" : "text-lg"
             }`}
           >
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
               motabar
             </span>
             .builds.stuff

@@ -51,8 +51,8 @@ export function TechStack() {
     <section id="tech-stack" data-track="section-tech-stack" className="py-16 md:py-20 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-purple-500/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-orange-500/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-amber-500/20 to-transparent rounded-full blur-3xl" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -61,7 +61,7 @@ export function TechStack() {
           className={`max-w-3xl mx-auto text-center mb-16 animate-on-scroll ${headerVisible ? "visible" : ""}`}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
-            <Code2 className="w-4 h-4 text-purple-500" />
+            <Code2 className="w-4 h-4 text-orange-500" />
             <span className="text-sm text-muted-foreground">Tools & Technologies</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
@@ -83,7 +83,7 @@ export function TechStack() {
               className="glass-strong p-6 rounded-2xl glow-border group hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <category.icon className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="font-semibold">{category.title}</h3>
@@ -112,7 +112,7 @@ export function TechStack() {
               <div className="w-3 h-3 rounded-full bg-green-500/70" />
               <span className="text-xs text-muted-foreground ml-2">pipeline.py</span>
             </div>
-            <pre className="text-sm text-muted-foreground whitespace-pre-wrap"><code><span className="text-purple-500">from</span> data_pipeline <span className="text-purple-500">import</span> extract, transform, load{"\n"}<span className="text-purple-500">from</span> analytics <span className="text-purple-500">import</span> track_conversions{"\n"}{"\n"}<span className="text-blue-500">def</span> <span className="text-green-500">build_insights</span>(raw_data):{"\n"}{"    "}cleaned = transform(raw_data){"\n"}{"    "}enriched = track_conversions(cleaned){"\n"}{"    "}<span className="text-purple-500">return</span> load(enriched, destination=<span className="text-orange-500">"bigquery"</span>)</code></pre>
+            <pre className="text-sm text-muted-foreground whitespace-pre-wrap"><code><span className="text-orange-500">from</span> data_pipeline <span className="text-orange-500">import</span> extract, transform, load{"\n"}<span className="text-orange-500">from</span> analytics <span className="text-orange-500">import</span> track_conversions{"\n"}{"\n"}<span className="text-amber-500">def</span> <span className="text-green-500">build_insights</span>(raw_data):{"\n"}{"    "}cleaned = transform(raw_data){"\n"}{"    "}enriched = track_conversions(cleaned){"\n"}{"    "}<span className="text-orange-500">return</span> load(enriched, destination=<span className="text-orange-400">"bigquery"</span>)</code></pre>
           </div>
         </div>
       </div>
