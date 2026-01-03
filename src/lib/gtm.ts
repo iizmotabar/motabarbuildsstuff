@@ -145,6 +145,51 @@ export const trackFormInteraction = (
   });
 };
 
+// PII censoring helpers
+const censorEmail = (email: string): string => {
+  if (!email) return '';
+  const [local, domain] = email.split('@');
+  if (!domain) return '***';
+  const censoredLocal = local.length > 2 
+    ? `${local[0]}***${local[local.length - 1]}` 
+    : '***';
+  return `${censoredLocal}@${domain}`;
+};
+
+const censorName = (name: string): string => {
+  if (!name) return '';
+  const parts = name.trim().split(/\s+/);
+  return parts.map(part => 
+    part.length > 1 ? `${part[0]}${'*'.repeat(part.length - 1)}` : '*'
+  ).join(' ');
+};
+
+// Dedicated form submission event with PII censoring
+export const trackFormSubmission = (
+  formName: string,
+  formData: {
+    name?: string;
+    email?: string;
+    message?: string;
+  },
+  additionalData?: Record<string, unknown>
+) => {
+  pushToDataLayer({
+    event: 'form_submission',
+    event_category: 'Form',
+    event_action: 'Submit Success',
+    event_label: formName,
+    form_name: formName,
+    // Censored PII
+    user_name_censored: censorName(formData.name || ''),
+    user_email_censored: censorEmail(formData.email || ''),
+    user_email_domain: formData.email?.split('@')[1] || '',
+    message_length: formData.message?.length || 0,
+    message_word_count: formData.message?.trim().split(/\s+/).filter(Boolean).length || 0,
+    ...additionalData,
+  });
+};
+
 export const trackCTAClick = (ctaId: string, ctaText: string, destination?: string) => {
   pushToDataLayer({
     event: 'cta_click',

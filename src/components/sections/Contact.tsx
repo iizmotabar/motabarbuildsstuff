@@ -10,7 +10,7 @@ import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button
 import { CollectibleOrb } from "@/components/CollectibleOrb";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
-import { trackCTAClick, trackLinkClick, trackFormInteraction } from "@/lib/gtm";
+import { trackCTAClick, trackLinkClick, trackFormInteraction, trackFormSubmission } from "@/lib/gtm";
 
 // Form validation schema
 const contactSchema = z.object({
@@ -144,6 +144,16 @@ export function Contact() {
       trackFormInteraction('submit_success', 'contact-form', undefined, {
         has_utm: !!trackingData.utm_source,
         has_gclid: !!trackingData.gclid,
+      });
+
+      // Dedicated form submission event with censored PII
+      trackFormSubmission('contact-form', formData, {
+        has_utm: !!trackingData.utm_source,
+        has_gclid: !!trackingData.gclid,
+        has_fbclid: !!trackingData.fbclid,
+        utm_source: trackingData.utm_source || undefined,
+        utm_medium: trackingData.utm_medium || undefined,
+        utm_campaign: trackingData.utm_campaign || undefined,
       });
 
       toast({
