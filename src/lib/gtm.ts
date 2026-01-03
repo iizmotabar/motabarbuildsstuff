@@ -145,27 +145,18 @@ export const trackFormInteraction = (
   });
 };
 
-// PII censoring helpers
-const censorEmail = (email: string): string => {
-  if (!email) return '';
-  const [local, domain] = email.split('@');
-  if (!domain) return '***';
-  const censoredLocal = local.length > 2 
-    ? `${local[0]}***${local[local.length - 1]}` 
-    : '***';
-  return `${censoredLocal}@${domain}`;
+// SHA256 hashing helper
+const sha256 = async (text: string): Promise<string> => {
+  if (!text) return '';
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text.toLowerCase().trim());
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 };
 
-const censorName = (name: string): string => {
-  if (!name) return '';
-  const parts = name.trim().split(/\s+/);
-  return parts.map(part => 
-    part.length > 1 ? `${part[0]}${'*'.repeat(part.length - 1)}` : '*'
-  ).join(' ');
-};
-
-// Dedicated form submission event with PII censoring
-export const trackFormSubmission = (
+// Dedicated form submission event with SHA256 hashed PII
+export const trackFormSubmission = async (
   formName: string,
   formData: {
     name?: string;
@@ -174,20 +165,84 @@ export const trackFormSubmission = (
   },
   additionalData?: Record<string, unknown>
 ) => {
+  const [hashedName, hashedEmail, hashedMessage] = await Promise.all([
+    sha256(formData.name || ''),
+    sha256(formData.email || ''),
+    sha256(formData.message || ''),
+  ]);
+
   pushToDataLayer({
     event: 'form_submission',
     event_category: 'Form',
     event_action: 'Submit Success',
     event_label: formName,
     form_name: formName,
-    // Censored PII
-    user_name_censored: censorName(formData.name || ''),
-    user_email_censored: censorEmail(formData.email || ''),
-    user_email_domain: formData.email?.split('@')[1] || '',
+    // SHA256 hashed PII
+    user_name_hashed: hashedName,
+    user_email_hashed: hashedEmail,
+    user_email_domain: formData.email?.split('@')[1]?.toLowerCase() || '',
+    user_message_hashed: hashedMessage,
     message_length: formData.message?.length || 0,
     message_word_count: formData.message?.trim().split(/\s+/).filter(Boolean).length || 0,
     ...additionalData,
   });
+};
+
+// Form abandonment tracking
+let formStarted = false;
+let formFieldsTouched = new Set<string>();
+let formStartTime: number | null = null;
+
+export const trackFormStart = (formName: string, fieldName: string) => {
+  if (!formStarted) {
+    formStarted = true;
+    formStartTime = Date.now();
+    pushToDataLayer({
+      event: 'form_start',
+      event_category: 'Form',
+      event_action: 'Start',
+      event_label: formName,
+      form_name: formName,
+      first_field: fieldName,
+    });
+  }
+  formFieldsTouched.add(fieldName);
+};
+
+export const trackFormAbandonment = (
+  formName: string,
+  formData: {
+    name?: string;
+    email?: string;
+    message?: string;
+  }
+) => {
+  if (formStarted) {
+    const timeSpent = formStartTime ? Math.round((Date.now() - formStartTime) / 1000) : 0;
+    const filledFields = Object.entries(formData).filter(([_, v]) => v && v.trim().length > 0).map(([k]) => k);
+    
+    pushToDataLayer({
+      event: 'form_abandonment',
+      event_category: 'Form',
+      event_action: 'Abandon',
+      event_label: formName,
+      form_name: formName,
+      fields_touched: Array.from(formFieldsTouched),
+      fields_touched_count: formFieldsTouched.size,
+      fields_filled: filledFields,
+      fields_filled_count: filledFields.length,
+      time_spent_sec: timeSpent,
+      name_filled: !!formData.name?.trim(),
+      email_filled: !!formData.email?.trim(),
+      message_filled: !!formData.message?.trim(),
+    });
+  }
+};
+
+export const resetFormTracking = () => {
+  formStarted = false;
+  formFieldsTouched.clear();
+  formStartTime = null;
 };
 
 export const trackCTAClick = (ctaId: string, ctaText: string, destination?: string) => {

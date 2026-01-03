@@ -10,7 +10,7 @@ import { SpinningGradientButton } from "@/components/ui/spinning-gradient-button
 import { CollectibleOrb } from "@/components/CollectibleOrb";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
-import { trackCTAClick, trackLinkClick, trackFormInteraction, trackFormSubmission } from "@/lib/gtm";
+import { trackCTAClick, trackLinkClick, trackFormInteraction, trackFormSubmission, trackFormStart, trackFormAbandonment, resetFormTracking } from "@/lib/gtm";
 
 // Form validation schema
 const contactSchema = z.object({
@@ -101,7 +101,17 @@ export function Contact() {
 
   useEffect(() => {
     setTrackingData(getTrackingParams() as typeof trackingData);
-  }, []);
+    
+    // Track form abandonment on page unload
+    const handleBeforeUnload = () => {
+      trackFormAbandonment('contact-form', formData);
+    };
+    
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [formData]);
 
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
   const { ref: formRef, isVisible: formVisible } = useScrollAnimation();
@@ -146,8 +156,8 @@ export function Contact() {
         has_gclid: !!trackingData.gclid,
       });
 
-      // Dedicated form submission event with censored PII
-      trackFormSubmission('contact-form', formData, {
+      // Dedicated form submission event with hashed PII
+      await trackFormSubmission('contact-form', formData, {
         has_utm: !!trackingData.utm_source,
         has_gclid: !!trackingData.gclid,
         has_fbclid: !!trackingData.fbclid,
@@ -155,6 +165,9 @@ export function Contact() {
         utm_medium: trackingData.utm_medium || undefined,
         utm_campaign: trackingData.utm_campaign || undefined,
       });
+
+      // Reset form abandonment tracking after successful submission
+      resetFormTracking();
 
       toast({
         title: "Message sent!",
@@ -242,7 +255,10 @@ export function Contact() {
                     setFormData({ ...formData, name: e.target.value });
                     if (errors.name) setErrors({ ...errors, name: undefined });
                   }}
-                  onFocus={() => trackFormInteraction('focus', 'contact-form', 'name')}
+                  onFocus={() => {
+                    trackFormInteraction('focus', 'contact-form', 'name');
+                    trackFormStart('contact-form', 'name');
+                  }}
                   data-track="contact-form-name"
                   className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.name ? "ring-2 ring-destructive/50" : ""}`}
                 />
@@ -260,7 +276,10 @@ export function Contact() {
                     setFormData({ ...formData, email: e.target.value });
                     if (errors.email) setErrors({ ...errors, email: undefined });
                   }}
-                  onFocus={() => trackFormInteraction('focus', 'contact-form', 'email')}
+                  onFocus={() => {
+                    trackFormInteraction('focus', 'contact-form', 'email');
+                    trackFormStart('contact-form', 'email');
+                  }}
                   data-track="contact-form-email"
                   className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.email ? "ring-2 ring-destructive/50" : ""}`}
                 />
@@ -277,7 +296,10 @@ export function Contact() {
                     setFormData({ ...formData, message: e.target.value });
                     if (errors.message) setErrors({ ...errors, message: undefined });
                   }}
-                  onFocus={() => trackFormInteraction('focus', 'contact-form', 'message')}
+                  onFocus={() => {
+                    trackFormInteraction('focus', 'contact-form', 'message');
+                    trackFormStart('contact-form', 'message');
+                  }}
                   rows={5}
                   data-track="contact-form-message"
                   className={`transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.message ? "ring-2 ring-destructive/50" : ""}`}
