@@ -19,13 +19,13 @@ export function Hero() {
       
       {/* Decorative tech icons */}
       <div className="absolute top-32 left-10 md:left-20 opacity-20 animate-pulse-glow">
-        <Terminal className="w-8 h-8 text-orange-500" />
+        <Terminal className="w-8 h-8 text-blue-500" />
       </div>
       <div className="absolute top-48 right-10 md:right-24 opacity-20 animate-pulse-glow" style={{ animationDelay: "1s" }}>
-        <Database className="w-10 h-10 text-amber-500" />
+        <Database className="w-10 h-10 text-purple-500" />
       </div>
       <div className="absolute bottom-32 left-20 md:left-32 opacity-15 animate-pulse-glow" style={{ animationDelay: "2s" }}>
-        <Cloud className="w-12 h-12 text-orange-400" />
+        <Cloud className="w-12 h-12 text-cyan-500" />
       </div>
       
       <div className="container mx-auto px-6 py-16 md:py-20">
@@ -73,11 +73,11 @@ export function Hero() {
           <div className="mt-16 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <div className="inline-block code-block text-left glow-border">
               <code className="text-muted-foreground">
-                <span className="text-orange-500">const</span>{" "}
-                <span className="text-amber-500">analytics</span> = {"{"}
-                <span className="text-green-500"> tracking</span>: <span className="text-orange-400">"fixed"</span>,
-                <span className="text-green-500"> data</span>: <span className="text-orange-400">"unified"</span>,
-                <span className="text-green-500"> decisions</span>: <span className="text-orange-400">"confident"</span> {"}"};
+                <span className="text-blue-500">const</span>{" "}
+                <span className="text-purple-500">analytics</span> = {"{"}
+                <span className="text-green-500"> tracking</span>: <span className="text-orange-500">"fixed"</span>,
+                <span className="text-green-500"> data</span>: <span className="text-orange-500">"unified"</span>,
+                <span className="text-green-500"> decisions</span>: <span className="text-orange-500">"confident"</span> {"}"};
               </code>
             </div>
           </div>

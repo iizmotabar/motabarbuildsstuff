@@ -57,10 +57,10 @@ export function Header() {
               scrolled ? "text-base" : "text-lg"
             }`}
           >
-            <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-yellow-500 bg-clip-text text-transparent drop-shadow-sm">
+            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
               motabar
             </span>
-            <span className="text-muted-foreground">.builds.stuff</span>
+            .builds.stuff
           </a>
 
           {/* Desktop Navigation */}

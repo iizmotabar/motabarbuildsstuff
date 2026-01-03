@@ -13,7 +13,7 @@ export function Footer() {
   return (
     <footer id="main-footer" data-track="footer" className="relative border-t border-border/50 py-12 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-orange-500/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 via-transparent to-transparent" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -59,17 +59,17 @@ export function Footer() {
                 rel="noopener noreferrer"
                 data-track="footer-social-linkedin"
                 onClick={() => trackLinkClick('https://www.linkedin.com/in/iizmotabar', 'LinkedIn', 'footer')}
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-border/50 flex items-center justify-center hover:border-orange-500/50 hover:scale-110 transition-all"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-blue-500/50 hover:scale-110 transition-all"
               >
-                <Linkedin className="w-4 h-4 text-orange-400" />
+                <Linkedin className="w-4 h-4 text-blue-400" />
               </a>
               <a
                 href="mailto:motabar.javaid@gmail.com"
                 data-track="footer-social-email"
                 onClick={() => trackLinkClick('mailto:motabar.javaid@gmail.com', 'Email', 'footer')}
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-border/50 flex items-center justify-center hover:border-amber-500/50 hover:scale-110 transition-all"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-purple-500/50 hover:scale-110 transition-all"
               >
-                <Mail className="w-4 h-4 text-amber-400" />
+                <Mail className="w-4 h-4 text-purple-400" />
               </a>
               <a
                 href="https://github.com"
@@ -77,9 +77,9 @@ export function Footer() {
                 rel="noopener noreferrer"
                 data-track="footer-social-github"
                 onClick={() => trackLinkClick('https://github.com', 'GitHub', 'footer')}
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500/10 to-amber-500/10 border border-border/50 flex items-center justify-center hover:border-orange-400/50 hover:scale-110 transition-all"
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-border/50 flex items-center justify-center hover:border-cyan-500/50 hover:scale-110 transition-all"
               >
-                <Github className="w-4 h-4 text-orange-300" />
+                <Github className="w-4 h-4 text-cyan-400" />
               </a>
             </div>
             <a
