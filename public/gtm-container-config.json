@@ -398,16 +398,20 @@
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - form_name}}" }
             ]},
             { "type": "MAP", "map": [
-              { "type": "TEMPLATE", "key": "name", "value": "user_name_censored" },
-              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_name_censored}}" }
+              { "type": "TEMPLATE", "key": "name", "value": "user_name_hashed" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_name_hashed}}" }
             ]},
             { "type": "MAP", "map": [
-              { "type": "TEMPLATE", "key": "name", "value": "user_email_censored" },
-              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_email_censored}}" }
+              { "type": "TEMPLATE", "key": "name", "value": "user_email_hashed" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_email_hashed}}" }
             ]},
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "user_email_domain" },
               { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_email_domain}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "user_message_hashed" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - user_message_hashed}}" }
             ]},
             { "type": "MAP", "map": [
               { "type": "TEMPLATE", "key": "name", "value": "message_length" },
@@ -449,6 +453,88 @@
         ],
         "fingerprint": "13",
         "firingTriggerId": ["13"]
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "tagId": "14",
+        "name": "GA4 - Form Start",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "form_start" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "form_name" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - form_name}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "first_field" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - first_field}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_title}}" }
+            ]}
+          ]}
+        ],
+        "fingerprint": "14",
+        "firingTriggerId": ["14"]
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "tagId": "15",
+        "name": "GA4 - Form Abandonment",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "TEMPLATE", "key": "eventName", "value": "form_abandonment" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{GA4 Stream ID}}" },
+          { "type": "LIST", "key": "eventParameters", "list": [
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "form_name" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - form_name}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "fields_touched_count" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - fields_touched_count}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "fields_filled_count" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - fields_filled_count}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "time_spent_sec" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - time_spent_sec}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "name_filled" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - name_filled}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "email_filled" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - email_filled}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "message_filled" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - message_filled}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_path" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_path}}" }
+            ]},
+            { "type": "MAP", "map": [
+              { "type": "TEMPLATE", "key": "name", "value": "page_title" },
+              { "type": "TEMPLATE", "key": "value", "value": "{{DLV - page_title}}" }
+            ]}
+          ]}
+        ],
+        "fingerprint": "15",
+        "firingTriggerId": ["15"]
       }
     ],
     "trigger": [
@@ -633,6 +719,34 @@
           ]}
         ],
         "fingerprint": "13"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "triggerId": "14",
+        "name": "CE - form_start",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          { "type": "EQUALS", "parameter": [
+            { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+            { "type": "TEMPLATE", "key": "arg1", "value": "form_start" }
+          ]}
+        ],
+        "fingerprint": "14"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "triggerId": "15",
+        "name": "CE - form_abandonment",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          { "type": "EQUALS", "parameter": [
+            { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+            { "type": "TEMPLATE", "key": "arg1", "value": "form_abandonment" }
+          ]}
+        ],
+        "fingerprint": "15"
       }
     ],
     "variable": [
@@ -991,12 +1105,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "28",
-        "name": "DLV - user_name_censored",
+        "name": "DLV - user_name_hashed",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "user_name_censored" }
+          { "type": "TEMPLATE", "key": "name", "value": "user_name_hashed" }
         ],
         "fingerprint": "28"
       },
@@ -1004,12 +1118,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "29",
-        "name": "DLV - user_email_censored",
+        "name": "DLV - user_email_hashed",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "user_email_censored" }
+          { "type": "TEMPLATE", "key": "name", "value": "user_email_hashed" }
         ],
         "fingerprint": "29"
       },
@@ -1030,12 +1144,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "31",
-        "name": "DLV - message_length",
+        "name": "DLV - user_message_hashed",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "message_length" }
+          { "type": "TEMPLATE", "key": "name", "value": "user_message_hashed" }
         ],
         "fingerprint": "31"
       },
@@ -1043,12 +1157,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "32",
-        "name": "DLV - message_word_count",
+        "name": "DLV - message_length",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "message_word_count" }
+          { "type": "TEMPLATE", "key": "name", "value": "message_length" }
         ],
         "fingerprint": "32"
       },
@@ -1056,12 +1170,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "33",
-        "name": "DLV - has_utm",
+        "name": "DLV - message_word_count",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "has_utm" }
+          { "type": "TEMPLATE", "key": "name", "value": "message_word_count" }
         ],
         "fingerprint": "33"
       },
@@ -1069,12 +1183,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "34",
-        "name": "DLV - has_gclid",
+        "name": "DLV - has_utm",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "has_gclid" }
+          { "type": "TEMPLATE", "key": "name", "value": "has_utm" }
         ],
         "fingerprint": "34"
       },
@@ -1082,12 +1196,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "35",
-        "name": "DLV - utm_source",
+        "name": "DLV - has_gclid",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "utm_source" }
+          { "type": "TEMPLATE", "key": "name", "value": "has_gclid" }
         ],
         "fingerprint": "35"
       },
@@ -1095,12 +1209,12 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "36",
-        "name": "DLV - utm_medium",
+        "name": "DLV - utm_source",
         "type": "v",
         "parameter": [
           { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
-          { "type": "TEMPLATE", "key": "name", "value": "utm_medium" }
+          { "type": "TEMPLATE", "key": "name", "value": "utm_source" }
         ],
         "fingerprint": "36"
       },
@@ -1108,6 +1222,19 @@
         "accountId": "6261244625",
         "containerId": "201920451",
         "variableId": "37",
+        "name": "DLV - utm_medium",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "utm_medium" }
+        ],
+        "fingerprint": "37"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "38",
         "name": "DLV - utm_campaign",
         "type": "v",
         "parameter": [
@@ -1115,7 +1242,98 @@
           { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
           { "type": "TEMPLATE", "key": "name", "value": "utm_campaign" }
         ],
-        "fingerprint": "37"
+        "fingerprint": "38"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "39",
+        "name": "DLV - first_field",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "first_field" }
+        ],
+        "fingerprint": "39"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "40",
+        "name": "DLV - fields_touched_count",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "fields_touched_count" }
+        ],
+        "fingerprint": "40"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "41",
+        "name": "DLV - fields_filled_count",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "fields_filled_count" }
+        ],
+        "fingerprint": "41"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "42",
+        "name": "DLV - time_spent_sec",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "time_spent_sec" }
+        ],
+        "fingerprint": "42"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "43",
+        "name": "DLV - name_filled",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "name_filled" }
+        ],
+        "fingerprint": "43"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "44",
+        "name": "DLV - email_filled",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "email_filled" }
+        ],
+        "fingerprint": "44"
+      },
+      {
+        "accountId": "6261244625",
+        "containerId": "201920451",
+        "variableId": "45",
+        "name": "DLV - message_filled",
+        "type": "v",
+        "parameter": [
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "message_filled" }
+        ],
+        "fingerprint": "45"
       }
     ],
     "fingerprint": "1"
