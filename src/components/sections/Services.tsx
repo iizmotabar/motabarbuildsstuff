@@ -139,8 +139,8 @@ export function Services() {
               className="glass-strong glow-border hover:border-foreground/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group cursor-pointer"
             >
               <CardHeader>
-                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="h-6 w-6 text-blue-400" />
+                <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 border border-orange-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="h-6 w-6 text-orange-400" />
                 </div>
                 <CardTitle className="text-lg font-semibold">
                   {service.title}
@@ -153,7 +153,7 @@ export function Services() {
                 <ul className="space-y-2">
                   {service.solutions.map((solution, i) => (
                     <li key={i} className="text-sm flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 mt-1.5 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 mt-1.5 flex-shrink-0" />
                       <span>{solution}</span>
                     </li>
                   ))}

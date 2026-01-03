@@ -37,23 +37,23 @@ export function CollectibleOrb({ id, className }: CollectibleOrbProps) {
       aria-label="Collect orb"
     >
       {/* Large outer glow - more visible */}
-      <span className="absolute -inset-3 rounded-full bg-purple-500/10 blur-xl animate-pulse" />
+      <span className="absolute -inset-3 rounded-full bg-orange-500/10 blur-xl animate-pulse" />
       
       {/* Pulsing ring */}
       <span 
-        className="absolute inset-0 rounded-full border border-purple-400/40"
+        className="absolute inset-0 rounded-full border border-orange-400/40"
         style={{ animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite" }}
       />
       
       {/* Secondary ring */}
       <span 
-        className="absolute inset-1 rounded-full border border-purple-400/20"
+        className="absolute inset-1 rounded-full border border-orange-400/20"
         style={{ animation: "ping 2s cubic-bezier(0, 0, 0.2, 1) infinite 0.5s" }}
       />
       
       {/* Core orb */}
       <span 
-        className="absolute inset-2 rounded-full bg-gradient-to-br from-purple-400 via-purple-500 to-blue-500 group-hover:from-purple-300 group-hover:to-blue-400 transition-all shadow-lg shadow-purple-500/50"
+        className="absolute inset-2 rounded-full bg-gradient-to-br from-orange-400 via-orange-500 to-amber-500 group-hover:from-orange-300 group-hover:to-amber-400 transition-all shadow-lg shadow-orange-500/50"
         style={{
           animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         }}
@@ -65,11 +65,11 @@ export function CollectibleOrb({ id, className }: CollectibleOrbProps) {
       
       {/* Floating particles effect */}
       <span 
-        className="absolute -top-1 left-1/2 h-1 w-1 rounded-full bg-purple-400/60"
+        className="absolute -top-1 left-1/2 h-1 w-1 rounded-full bg-orange-400/60"
         style={{ animation: "float 3s ease-in-out infinite" }}
       />
       <span 
-        className="absolute top-1/2 -right-1 h-0.5 w-0.5 rounded-full bg-blue-400/60"
+        className="absolute top-1/2 -right-1 h-0.5 w-0.5 rounded-full bg-amber-400/60"
         style={{ animation: "float 3s ease-in-out infinite 1s" }}
       />
       

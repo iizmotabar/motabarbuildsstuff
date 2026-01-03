@@ -45,12 +45,12 @@ export function SpinningGradientButton({
 
   const gradientWrapper = (
     <>
-      {/* Subtle sliding gradient border - lighter colors */}
+      {/* Subtle sliding gradient border - warm orange colors */}
       <span className="absolute inset-0 rounded-lg overflow-hidden">
         <span 
           className="absolute inset-0 opacity-60 group-hover:opacity-90 transition-opacity duration-500"
           style={{
-            background: "linear-gradient(90deg, transparent 0%, rgba(192, 162, 255, 0.7) 30%, rgba(147, 197, 253, 0.7) 70%, transparent 100%)",
+            background: "linear-gradient(90deg, transparent 0%, rgba(251, 146, 60, 0.7) 30%, rgba(251, 191, 36, 0.7) 70%, transparent 100%)",
             backgroundSize: "300% 100%",
             animation: "slideGradient 5s ease-in-out infinite",
           }}

@@ -96,12 +96,12 @@ export function Packages() {
               key={index}
               data-track={`package-card-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
               className={`relative border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:-translate-y-1 ${
-                pkg.featured ? "border-purple-500/30" : ""
+                pkg.featured ? "border-orange-500/30" : ""
               }`}
             >
               {pkg.featured && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-medium px-3 py-1 rounded-full">
                     Most Popular
                   </span>
                 </div>
@@ -119,7 +119,7 @@ export function Packages() {
                 <ul className="space-y-3">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm">
-                      <Check className="h-4 w-4 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <Check className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
                       <span className="text-muted-foreground">{feature}</span>
                     </li>
                   ))}

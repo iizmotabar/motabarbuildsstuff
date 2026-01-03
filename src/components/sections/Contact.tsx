@@ -195,8 +195,8 @@ export function Contact() {
       <CollectibleOrb id="contact" className="top-20 left-[10%] hidden md:block" />
       
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-600/10 blur-3xl" />
-      <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-gradient-to-br from-purple-600/10 to-cyan-500/10 blur-3xl" />
+      <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-40 h-40 rounded-full bg-gradient-to-br from-amber-500/10 to-orange-400/10 blur-3xl" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-xl mx-auto">
@@ -226,7 +226,7 @@ export function Contact() {
                 data-track="contact-cta-calendly"
                 onClick={() => trackCTAClick('contact-cta-calendly', 'Book on Calendly', 'https://calendly.com/iizmotabar')}
               >
-                <Calendar className="h-4 w-4 group-hover:rotate-12 transition-transform text-purple-400" />
+                <Calendar className="h-4 w-4 group-hover:rotate-12 transition-transform text-orange-400" />
                 Book on Calendly
               </SpinningGradientButton>
               <Button 
@@ -260,7 +260,7 @@ export function Contact() {
                     trackFormStart('contact-form', 'name');
                   }}
                   data-track="contact-form-name"
-                  className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.name ? "ring-2 ring-destructive/50" : ""}`}
+                  className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-orange-500/20 ${errors.name ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.name && <p className="text-sm text-destructive">{errors.name}</p>}
               </div>
@@ -281,7 +281,7 @@ export function Contact() {
                     trackFormStart('contact-form', 'email');
                   }}
                   data-track="contact-form-email"
-                  className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.email ? "ring-2 ring-destructive/50" : ""}`}
+                  className={`h-12 transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-orange-500/20 ${errors.email ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
               </div>
@@ -302,7 +302,7 @@ export function Contact() {
                   }}
                   rows={5}
                   data-track="contact-form-message"
-                  className={`transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-purple-500/20 ${errors.message ? "ring-2 ring-destructive/50" : ""}`}
+                  className={`transition-all focus:scale-[1.01] glass-subtle border-0 focus:ring-2 focus:ring-orange-500/20 ${errors.message ? "ring-2 ring-destructive/50" : ""}`}
                 />
                 {errors.message && <p className="text-sm text-destructive">{errors.message}</p>}
               </div>

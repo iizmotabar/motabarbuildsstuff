@@ -62,7 +62,7 @@ export function FloatingElements() {
       case "code":
         return (
           <span 
-            className={`font-mono text-blue-400 ${baseOpacity} whitespace-nowrap font-medium`} 
+            className={`font-mono text-orange-400 ${baseOpacity} whitespace-nowrap font-medium`} 
             style={{ fontSize: el.size * 0.6 }}
           >
             {el.content}
@@ -71,7 +71,7 @@ export function FloatingElements() {
       case "data":
         return (
           <span 
-            className={`font-mono text-purple-400 ${baseOpacity} font-bold`} 
+            className={`font-mono text-amber-400 ${baseOpacity} font-bold`} 
             style={{ fontSize: el.size * 0.7 }}
           >
             {el.content}
@@ -81,7 +81,7 @@ export function FloatingElements() {
         const IconComponent = icons[el.iconIndex || 0];
         return (
           <IconComponent 
-            className={`text-cyan-400 ${baseOpacity}`}
+            className={`text-orange-400 ${baseOpacity}`}
             style={{ width: el.size, height: el.size }}
             strokeWidth={1.5}
           />
@@ -90,22 +90,22 @@ export function FloatingElements() {
       case "dot":
         return (
           <div
-            className={`rounded-full bg-gradient-to-br from-blue-500 to-purple-500 ${baseOpacity}`}
+            className={`rounded-full bg-gradient-to-br from-orange-500 to-amber-500 ${baseOpacity}`}
             style={{ width: el.size * 0.25, height: el.size * 0.25 }}
           />
         );
       case "ring":
         return (
           <div
-            className={`rounded-full border border-purple-400/30 ${baseOpacity}`}
+            className={`rounded-full border border-orange-400/30 ${baseOpacity}`}
             style={{ width: el.size, height: el.size }}
           />
         );
       case "cross":
         return (
           <div className={`relative ${baseOpacity}`} style={{ width: el.size * 0.5, height: el.size * 0.5 }}>
-            <div className="absolute top-1/2 left-0 w-full h-px bg-blue-400 -translate-y-1/2" />
-            <div className="absolute top-0 left-1/2 w-px h-full bg-blue-400 -translate-x-1/2" />
+            <div className="absolute top-1/2 left-0 w-full h-px bg-orange-400 -translate-y-1/2" />
+            <div className="absolute top-0 left-1/2 w-px h-full bg-orange-400 -translate-x-1/2" />
           </div>
         );
     }
@@ -132,7 +132,7 @@ export function FloatingElements() {
       <svg className="absolute inset-0 w-full h-full opacity-[0.015] dark:opacity-[0.025]">
         <defs>
           <pattern id="floatGrid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <circle cx="30" cy="30" r="1" fill="currentColor" className="text-blue-500" />
+            <circle cx="30" cy="30" r="1" fill="currentColor" className="text-orange-500" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#floatGrid)" />
@@ -142,8 +142,8 @@ export function FloatingElements() {
       <svg className="absolute inset-0 w-full h-full opacity-[0.02] dark:opacity-[0.03]">
         <defs>
           <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(217, 91%, 60%)" />
-            <stop offset="100%" stopColor="hsl(271, 81%, 56%)" />
+            <stop offset="0%" stopColor="hsl(25, 95%, 55%)" />
+            <stop offset="100%" stopColor="hsl(35, 100%, 50%)" />
           </linearGradient>
         </defs>
         {[...Array(12)].map((_, i) => (
