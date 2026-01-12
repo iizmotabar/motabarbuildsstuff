@@ -5,5 +5,42 @@ Allow: /
 # Block non-essential paths
 Disallow: /assets/
 
+# AI Crawlers - Explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 # Sitemap location
 Sitemap: https://motabarbuildstuff.com/sitemap.xml
+
+# LLM context file
+# See https://motabarbuildstuff.com/llms.txt for AI-readable site summary
