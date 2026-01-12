@@ -1,0 +1,83 @@
+# motabar.builds.stuff
+
+> Your go-to data guy for tracking, analytics, and data pipelines
+
+## About
+Motabar is a data analytics and tracking specialist who helps businesses fix broken tracking, build data pipelines, and turn messy numbers into actionable insights. Based worldwide, serving clients globally.
+
+## Services
+
+### Track Your Marketing Accurately
+Fix broken tracking, connect forms/calls/ads/CRM, enrich leads automatically with source data.
+Outcome: Confidence in your numbers and the ability to cut wasted spend.
+
+### Dashboards That Show What Matters
+One place to see spend, revenue, CAC, and ROAS across campaigns.
+Outcome: Faster decisions without platform hopping.
+
+### Automated Reporting Systems
+Automated data ingestion, daily refreshes, Slack/email alerts, historical trend analysis.
+Outcome: Save hours weekly and spot issues early.
+
+### Measure SEO & Organic Performance
+Track keywords, rankings, organic conversions, AI overview impact.
+Outcome: Clarity on where SEO is paying off.
+
+### Fast Professional Websites
+Conversion-optimized, mobile-ready, SEO-ready with built-in tracking.
+Outcome: A site that converts and informs strategy.
+
+### Tracking Audits
+Check accuracy across platforms, analyze performance, prioritize fixes.
+Outcome: Prioritized fixes and a roadmap to better insights.
+
+### Workflow Automation & AI
+Zapier, Make, n8n automations, custom GPTs and chatbots.
+Outcome: Reduced manual work, enriched leads, scalable operations.
+
+### Cloud Infrastructure & Data Pipelines
+ETL pipelines, data warehousing with BigQuery, Snowflake, or Redshift.
+Outcome: A single source of truth for all your business data.
+
+## Pricing
+
+- Starter: $250-$350 (Basic tracking audit, GA4 setup, documentation)
+- Growth: $750-$1,200 (Full audit, multi-platform, dashboards, 30-day support)
+- Performance: $2,000-$4,000 (Enterprise architecture, warehouse, ongoing support)
+- Website Build: Starting at $600 (Modern design, tracking, SEO, mobile)
+
+## Tech Stack
+
+### Cloud Platforms
+Google Cloud Platform, BigQuery, Snowflake, AWS, Redshift, Azure
+
+### Analytics Tools
+Google Analytics 4, Google Tag Manager, Segment, Mixpanel, Amplitude, Heap
+
+### Data Engineering
+dbt, Airflow, Fivetran, Python, SQL, Apache Spark
+
+### Visualization
+Looker Studio, Tableau, Power BI, Metabase, Superset
+
+### Automation
+Zapier, Make, n8n, Retool, Custom APIs
+
+### Tracking
+Server-side tracking, Conversion APIs, Facebook CAPI, Google Ads Enhanced Conversions
+
+## Testimonials
+
+"Motabar transformed our analytics setup. We finally have accurate data we can trust for our marketing decisions." - Sarah K., Marketing Director
+
+"The dashboard he built saves us hours every week. We can now see all our metrics in one place." - Michael R., CEO
+
+"Professional, thorough, and delivered ahead of schedule. Our tracking is finally working properly." - Emily T., Growth Lead
+
+## Contact
+- Website: https://motabarbuildstuff.com
+- Book consultation: https://motabarbuildstuff.com/#contact
+- LinkedIn: https://linkedin.com/in/iizmotabar
+
+## Keywords
+data analytics consultant, fix broken tracking, GA4 setup, GTM implementation, marketing dashboard, data pipelines, BigQuery, server-side tracking, marketing attribution, conversion tracking, looker studio, dbt, marketing analytics, business intelligence, data warehouse, ETL pipelines
