@@ -1,14 +1,9 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# Allow all crawlers
 User-agent: *
 Allow: /
+
+# Block non-essential paths
+Disallow: /assets/
+
+# Sitemap location
+Sitemap: https://motabarbuildstuff.com/sitemap.xml
